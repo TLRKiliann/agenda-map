@@ -1,0 +1,31 @@
+/*############################*/
+/*Div + MAIN*/
+
+.MeetingPoint {
+
+  border: 1px solid white;
+}
+
+.SubMeetingPoint {
+
+  border: 1px solid orange;
+}
+
+/*############################*/
+/*Div + Content*/
+.titleMP--div {
+
+  border: 1px solid lightgreen;
+}
+
+.divMP--content {
+
+  border: 1px solid hotpink;
+}
+
+/*############################*/
+/*Div + BTN*/
+.btnMP--div {
+
+  border: 1px solid lightblue;
+}

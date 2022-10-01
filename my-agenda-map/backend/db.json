@@ -1,0 +1,22 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "name": "Jeffrey",
+      "number": "024 232 33 44",
+      "editNum": false
+    },
+    {
+      "id": 2,
+      "name": "Chloe",
+      "number": "022 121 32 12",
+      "editNum": false
+    },
+    {
+      "id": 3,
+      "name": "Nathan",
+      "number": "022 676 77 98",
+      "editNum": false
+    }
+  ]
+}

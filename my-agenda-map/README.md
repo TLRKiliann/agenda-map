@@ -1,4 +1,4 @@
-# FRONTEND SIDE
+# FRONTEND AGENDA MAP
 
 Agenda was made by CRA + TypeScript :
 

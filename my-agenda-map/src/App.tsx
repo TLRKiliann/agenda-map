@@ -1,20 +1,20 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { NavBar } from './Components/NavBar';
-import { MeetingPoint } from '';
-import { PhoneContact } from '';
-import { Map } from ''; 
-import './App.css';
+import { MeetingPoint } from './Pages/MeetingPoint';
+import { PhoneContact } from './Pages/PhoneContact';
+import { MapMap } from './Pages/MapMap'; 
+import './App.scss';
 
 const App:React.FC = () => {
   return (
     <div>
-      <NavBar />
-      <Routes>
-        <Route path="/MeetingPoint" element={<MeetingPoint />} />
+      <Router>
+        <NavBar />
+        <Route path="/" element={<MeetingPoint />} />
         <Route path="/PhoneContact" element={<PhoneContact />} />
-        <Route path="/Map" element={<Map />} />
-      </Routes>
+        <Route path="/MapMap" element={<MapMap />} />
+      </Router>
     </div>
   );
 }

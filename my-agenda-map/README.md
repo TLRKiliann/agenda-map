@@ -10,7 +10,7 @@ Agenda was made by CRA + TypeScript :
 
 └─ $ ▶ npm install axios (to communicate with express in backend)
 
-└─ $ ▶ npm install react-router-dom
+└─ $ ▶ npm install --save @types/react-router-dom
 
 └─ $ ▶ npm install --save-dev sass
 

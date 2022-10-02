@@ -1,24 +1,70 @@
-import './MeetingPoint.css';
+import React, { useState, useEffect } from 'react';
+import noteServices from './Services/noteServices';
+import './MeetingPoint.scss';
+
+interface DataType {
+  date: string
+  location: string
+  firstName: string
+  lastName: string
+  phone: string
+  email: string
+  note: string
+}
 
 /*
 Faudra balancer avec les id après dans les functions.
 */
 
-export const MeetingPoint = () => {
+export const MeetingPoint = (
+  {date, location, firstName, 
+    lastName, phone, email, note}: DataType) => {
 
-  const handleSet = () => {
-    console.log("handleSet");
+  const [data, setData] = useState<Array<DataType>>();
+  const [secData, setSecData] = useState<Array<DataType>>();
+ 
+  const [date, setDate] = useState<string>("");
+  const [hour, setHour] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [note, setNote] = useState<string>("");
+
+  const [modify, setModify] = useState<boolean>(false);
+
+  useEffect(() => {
+    noteServices
+      .getALL()
+      .then(initialNote => {
+        setData(initialNote);
+        setSecData(initialNote);
+      })
+  }, []);
+
+  const handleModify = (id: number) => {
+    console.log("handleModify");
+    setModify(true);
   };
 
-  const handleSave = () => {
+  const handleSave = (e: React.FormEvent, id: number) => {
     console.log("handleSave");
+    setDate(date);
+    setHour(hour);
+    setLocation(location);
+    setFirstName(firstName);
+    setLastName(lastName);
+    setPhone(phone);
+    setEmail(email);
+    setNote(note);
   };
 
-  const handleDelete = () => {
+  const handleDelete = (id: number) => {
     console.log("handleDelete");
   };
 
-  const handleMap = () => {
+  const handleMap = (id: number) => {
     console.log("handleMap");
   };
 
@@ -42,7 +88,14 @@ export const MeetingPoint = () => {
           </label>
           <input
             type="text"
-            placeholder="Date" />
+            autofocus
+            placeholder="00/00/0000" />
+          <label>
+            Hour :
+          </label>
+          <input
+            type="text"
+            placeholder="00:00:00" />
         </div>
         
         <div className="divMP--content">
@@ -56,27 +109,37 @@ export const MeetingPoint = () => {
         </div>
         
         <div className="divMP--content">
-          <label>
-            Contact :
-          </label>
-          <input
-            type="text"
 
-            placeholder="firstname" />
-          <input
-            type="text"
+          <div className="sub--contacts">
+            <label>
+              Contact :
+            </label>
+            <input
+              type="text"
 
-            placeholder="lastname" />
-        </div>
+              placeholder="firstname" />
+            <input
+              type="text"
 
-        <div className="divMP--content">
-          <label>
-            Phone Number :
-          </label>
-          <input
-            type="text"
+              placeholder="lastname" />
 
-            placeholder="ex: 333 333 22 22" />
+            <label>
+              Phone Number :
+            </label>
+            <input
+              type="text"
+
+              placeholder="ex: 333 333 22 22" />
+
+            <label>
+              Email :
+            </label>
+            <input
+              type="email"
+
+              placeholder="ex: super.man@mail.uk" />
+          </div>
+
         </div>
 
         <div className="divMP--content">
@@ -84,25 +147,31 @@ export const MeetingPoint = () => {
             Note(s) :
           </label>
           <textarea
-            type="text"
-
+            rows="4"
+            cols="50"
+            wrap="soft"
             placeholder="Write something here...">
           </textarea>
         </div>
 
         <div className="btnMP--div">
-          <button onClick={handleSet}>
-            Settings
+
+          <button onClick={() => handleModify(data.id)}>
+            Modify
           </button>
-          <button onClick={handleSave}>
+
+          <button onClick={() => handleSave(e, data.id)}>
             Save
           </button>
-          <button onClick={handleDelete}>
+
+          <button onClick={() => handleDelete(data.id)}>
             Delete
           </button>
-          <button onClick={handleMap}>
+
+          <button onClick={() => handleMap(data.id)}>
             Map Location
           </button>
+
         </div>
 
       </div>

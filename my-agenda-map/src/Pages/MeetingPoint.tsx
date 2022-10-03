@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import noteServices from './Services/noteServices';
+import noteServices from '../Services/noteServices';
 import './MeetingPoint.scss';
 
-interface DataType {
+/*interface DataType {
   date: string
   location: string
   firstName: string
@@ -12,16 +12,19 @@ interface DataType {
   note: string
 }
 
+(
+  {date, location, firstName, 
+    lastName, phone, email, note}: DataType)
+*/
+
 /*
 Faudra balancer avec les id après dans les functions.
 */
 
-export const MeetingPoint = (
-  {date, location, firstName, 
-    lastName, phone, email, note}: DataType) => {
+export const MeetingPoint = () => {
 
-  const [data, setData] = useState<Array<DataType>>();
-  const [secData, setSecData] = useState<Array<DataType>>();
+  const [data, setData] = useState<Array<string>>();
+  const [secData, setSecData] = useState<Array<string>>();
  
   const [date, setDate] = useState<string>("");
   const [hour, setHour] = useState<string>("");
@@ -36,7 +39,7 @@ export const MeetingPoint = (
 
   useEffect(() => {
     noteServices
-      .getALL()
+      .getAll()
       .then(initialNote => {
         setData(initialNote);
         setSecData(initialNote);
@@ -88,7 +91,7 @@ export const MeetingPoint = (
           </label>
           <input
             type="text"
-            autofocus
+            autoFocus
             placeholder="00/00/0000" />
           <label>
             Hour :
@@ -147,8 +150,8 @@ export const MeetingPoint = (
             Note(s) :
           </label>
           <textarea
-            rows="4"
-            cols="50"
+            rows={4}
+            cols={50}
             wrap="soft"
             placeholder="Write something here...">
           </textarea>

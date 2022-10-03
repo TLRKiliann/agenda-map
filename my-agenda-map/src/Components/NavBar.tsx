@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
+//import { imageLogo } from '../assets/image.png'
 import '../StylesComponents/NavBar.scss';
 
 export const NavBar = () => {
   return (
     <div className="NavBar--div">
       <nav className="nav--div">
-        <img
-          width="90px" height="60px"
-          src={imageLogo} alt="logo_koala"
-        />
+
+
         <li>
           <Link to='/' >
             Meeting Point
@@ -33,3 +32,10 @@ export const NavBar = () => {
     </div>
   )
 }
+
+/*
+        <img
+          width="90px" height="60px"
+          src={imageLogo} alt="logo_koala"
+        />
+*/

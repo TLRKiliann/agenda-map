@@ -1,0 +1,82 @@
+.login {
+}
+
+.login h1 {
+  font-family: 'Consolas';
+  margin: 20px 20px;
+}
+
+.frame {
+  width: 400px;
+  margin: 10% auto;
+  display: flex;
+  flex-direction: column;
+  background: blue;
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+.frame h2 {
+  text-align: center;
+}
+
+.subframe {
+  margin: 5px 36px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.subframe label {
+  margin: 10px 20px;
+}
+
+.btn--login {
+  padding: 10px 20px;
+  margin: 0px auto;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: royalblue;
+  border: 1px solid royalblue;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+
+button:hover {
+  background: lightblue;
+  color: black;
+}
+
+.notification p {
+  width: 40%;
+  margin: 10px auto;
+  padding: 10px 10px;
+
+  text-align: center;
+  font-size: 1.2rem;
+  
+  border-radius: 5px;
+  color: orange;
+}
+
+.loginok p {
+  width: 40%;
+  margin: 10px auto;
+  padding: 10px 10px;
+
+  text-align: center;
+  font-size: 1.2rem;
+  
+  border-radius: 5px;
+  color: lightgreen;
+}

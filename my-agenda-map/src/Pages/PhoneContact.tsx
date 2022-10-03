@@ -1,9 +1,11 @@
+import '../StylesPages/PhoneContact.scss';
+
 export const PhoneContact = () => {
   return (
-    <div>
+    <div className="phonecontact">
       <h1 title="All contacts are here !">Phone Contacts</h1>
 
-      <details>
+      <details className="details--div">
         <summary>Info</summary>
         <p>Epcot is a theme park at Walt Disney World Resort 
           featuring exciting attractions, international pavilions,

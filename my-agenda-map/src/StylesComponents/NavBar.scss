@@ -1,11 +1,80 @@
-.NavBar--div {
-  
+.navbar--div {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  background: black;
+  border-bottom: 1px solid grey;
 }
 
-.Nav--div {
-  
+.subnavbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  /*border: 2px solid yellow;*/
 }
 
-.NavBar--login {
+.nav--div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  /*border: 2px solid orange;*/
+}
+
+.middlenav--div {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+
+  /*border: 2px solid lightgreen;*/
+}
+
+.middlenav--div li {
+  list-style: none;
+}
+
+.middlenav--div li:hover {
+  transform: scale(1.1);
+}
+
+.tag--link {
+  margin: 0px 30px;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-family: 'Consolas';
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: whitesmoke;
+
+  /*border: 2px solid red;*/
+}
+
+.tag--link:hover {
+  color: orange;
+}
+
+.navbar--login {
+  margin-right: 20px;
+  padding: 3px 10px;
+  display: flex;
   
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background: lightgrey;
+  border: 1px solid royalblue;
+  border-radius: 7px;
+  color: royalblue;
+}
+
+.navbar--login:hover {
+  background: royalblue;
+  color: whitesmoke;
 }

@@ -1,0 +1,27 @@
+.phonecontact {
+  /*border: 2px solid orange;*/
+}
+
+.phonecontact h1 {
+  font-family: 'Consolas';
+  margin: 20px 20px;
+}
+
+.details--div {
+  margin: 20px 20px;
+  cursor: pointer;
+
+  /*border: 2px solid white;*/
+}
+
+.details--div:hover {
+  color: orange;
+}
+
+summary {
+  width: 60px;
+  padding: 10px 10px;
+  font-size: 1.4rem;
+
+  /*border: 2px solid white;*/ 
+}

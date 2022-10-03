@@ -1,41 +1,42 @@
 import { Link } from 'react-router-dom';
-//import { imageLogo } from '../assets/image.png'
+import imageLogo from '../assets/images/koala_tree.png'
 import '../StylesComponents/NavBar.scss';
 
 export const NavBar = () => {
   return (
-    <div className="NavBar--div">
-      <nav className="nav--div">
+    <div className="navbar--div">
 
+      <div className="subnavbar">
 
-        <li>
-          <Link to='/' >
-            Meeting Point
-          </Link>
-        </li>
-        <li>
-          <Link to='/PhoneContact' >
-            Phone Contacts
-          </Link>
-        </li>
-        <li>
-          <Link to='/MapMap' >
-            Map
-          </Link>
-        </li>
-      </nav>
+        <div className="nav--div">
+          <img
+            width="60px" height="60px"
+            src={imageLogo} alt="logo_koala"
+          />
+        </div>
 
-      <div className="NavBar--login">
-        <span>Login/Logout</span>
+        <nav className="middlenav--div">
+          <li>
+            <Link className="tag--link" to='/' >
+              Login
+            </Link>
+          </li>
+          <li>
+            <Link className="tag--link" to='/PhoneContact' >
+              Phone Contacts
+            </Link>
+          </li>
+          <li>
+            <Link className="tag--link" to='/MeetingPoint' >
+              Meeting Point
+            </Link>
+          </li>
+        </nav>
+
+        <div className="navbar--login">
+          <span>Login/Logout</span>
+        </div>
       </div>
-
     </div>
   )
 }
-
-/*
-        <img
-          width="90px" height="60px"
-          src={imageLogo} alt="logo_koala"
-        />
-*/

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import noteServices from '../Services/noteServices';
-import './MeetingPoint.scss';
+//import React, { useState, useEffect } from 'react';
+//import { Link } from 'react-router-dom';
+//import noteServices from '../Services/noteServices';
+import '../StylesPages/MeetingPoint.scss';
 
 /*interface DataType {
   date: string
@@ -23,7 +23,14 @@ Faudra balancer avec les id après dans les functions.
 */
 
 export const MeetingPoint = () => {
+  return (
+    <div className="meetingpoint">
+      <h1>Meeting Point</h1>
+    </div>
+  )
+}
 
+/*
   const [datas, setDatas] = useState<Array<string>>([]);
   const [secDatas, setSecDatas] = useState<Array<string>>([]);
  
@@ -38,6 +45,8 @@ export const MeetingPoint = () => {
 
   const [showMeetingPoint, setShowMeetingPoint] = useState<boolean>(false);
   const [modify, setModify] = useState<boolean>(false);
+
+  const MAPPING = "https://wego.here.com/directions/mix//";
 
   useEffect(() => {
     noteServices
@@ -81,7 +90,7 @@ export const MeetingPoint = () => {
   /*const handleMap = (id: number) => {
     console.log("handleMap");
     const localisation = datas.find(data => data.id === id)
-  };*/
+  };
 
   return (
     <div className="MeetingPoint">
@@ -128,7 +137,7 @@ export const MeetingPoint = () => {
                 type="text"
                 value={location}
                 onChange={handleLocation}
-                placeholder="ex: Rue Delancienne 24, France" />
+                placeholder="ex: Chemin du Mottier 10, 1052 Le Mont-sur-Lausanne" />
             </div>
             
             <div className="divMP--content">
@@ -207,9 +216,10 @@ export const MeetingPoint = () => {
                 Delete
               </button>
 
-              <Link to="/MapMap" location={location}>
-                Map Location
-              </Link>
+              <a href={`${MAPPING} ${location}`} className="hwg--a">
+                Here We Go!
+              </a>
+
             </div>
 
           </div>
@@ -218,6 +228,6 @@ export const MeetingPoint = () => {
       </div>
     </div>
   )
-}
+}*/
 
 //              <Link to="/MapMap" location={location} onClick={() => handleMap(data.id)}>

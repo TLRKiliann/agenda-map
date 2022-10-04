@@ -32,8 +32,6 @@ db.connect( (err) => {
 });
 
 app.get('/api/meeting', (request, response) => {
-
-
   db.query('SELECT * from meetingpoint', (err, result) => {
     if (err) {
       console.log(err)
@@ -58,7 +56,7 @@ app.post('/api/meeting', (request, response) => {
     hour, location, firstName, lastName, phone,\
     email, notice) VALUES (?,?,?,?,?,?)',
     [id, date, hour, location, firstName, lastName,
-    phone, email,notice], (err, result) => {
+    phone, email, notice], (err, result) => {
       if (err) {
         console.log(err, result)
       }
@@ -80,8 +78,8 @@ app.put('/api/meeting/:id', (request, response) => {
   const notice = request.body.notice;
 
   db.query('UPDATE meetingpoint SET date=?, hour=?, location=?,\
-    firstName=?, lastName=?, phone=?, email=?, notice=?, WHERE order_id=?',
-    [date, hour, location, firstName, lastName, phone, email, notice, order_id],
+    firstName=?, lastName=?, phone=?, email=?, notice=?, WHERE id=?',
+    [date, hour, location, firstName, lastName, phone, email, notice, id],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -92,10 +90,10 @@ app.put('/api/meeting/:id', (request, response) => {
   );
 });
 
-app.delete('/api/meeting/:order_id', (request, response) => {
-  const order_id = request.params.order_id;
+app.delete('/api/meeting/:id', (request, response) => {
+  const id = request.params.id;
 
-  db.query('DELETE FROM meetingpoint WHERE order_id=?', order_id, (err, result) => {
+  db.query('DELETE FROM meetingpoint WHERE id=?', id, (err, result) => {
     if (err) {
       console.log(err);
     } else {

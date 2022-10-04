@@ -50,8 +50,8 @@ export const Login = () => {
             placeholder="Password" />
         </div>
 
-        <div className="btn--login">
-          <button type="submit">
+        <div className="divbtn--login">
+          <button type="submit" className="btn--login">
             Enter
           </button>
         </div>

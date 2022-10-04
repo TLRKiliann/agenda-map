@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 //const routeLogin = require('./routes/Login');
 //const routeSignUp = require('./routes/SignUp');
 
+const PORT = 4002;
 app.use(express.json());
 app.use(cors());
 
@@ -31,7 +32,7 @@ db.connect( (err) => {
     }
 });
 
-app.get('/api/meeting', (request, response) => {
+app.get('/api/getAllMembers', (request, response) => {
   db.query('SELECT * from meetingpoint', (err, result) => {
     if (err) {
       console.log(err)
@@ -41,7 +42,7 @@ app.get('/api/meeting', (request, response) => {
   }) 
 });
 
-app.post('/api/meeting', (request, response) => {
+app.post('/api/create', (request, response) => {
   const id = request.body.id;
   const date = request.body.date;
   const hour = request.body.hour;
@@ -66,7 +67,7 @@ app.post('/api/meeting', (request, response) => {
     })
 });
 
-app.put('/api/meeting/:id', (request, response) => {
+app.put('/api/update/:id', (request, response) => {
   const id = request.body.id;
   const date = request.body.date;
   const hour = request.body.hour;
@@ -90,7 +91,7 @@ app.put('/api/meeting/:id', (request, response) => {
   );
 });
 
-app.delete('/api/meeting/:id', (request, response) => {
+app.delete('/api/delete/:id', (request, response) => {
   const id = request.params.id;
 
   db.query('DELETE FROM meetingpoint WHERE id=?', id, (err, result) => {
@@ -105,5 +106,4 @@ app.delete('/api/meeting/:id', (request, response) => {
 //app.use('/login', routeLogin);
 //app.use('/signup', routeSignUp);
 
-const PORT = 4002;
 app.listen(PORT, () => console.log(`[+] Server is running on port ${PORT} !`));

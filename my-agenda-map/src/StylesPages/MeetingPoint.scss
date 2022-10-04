@@ -3,7 +3,6 @@
 
 .meetingpoint {
 
-  border: 2px solid orange;
 }
 
 .meetingpoint h1 {
@@ -11,9 +10,62 @@
   margin: 20px 20px;
 }
 
+.mainfirst--div {
+  width: 100%;
+  margin: auto;
+
+  display: flex;
+}
+
+.first--data {
+  width: 60%;
+  margin: 20px auto;
+  padding: 20px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+
+  background: blue;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px black;
+}
+
+.caps--div {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+
+}
+
+.align--div {
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+
+}
+
+.align--div p {
+  font-family: 'Consolas';
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.align--div input {
+  margin: 0px 20px;
+}
+
+.align--div textarea {
+  margin: 0px 20px;
+}
+
 .SubMeetingPoint {
 
-  border: 1px solid orange;
+  border: 1px solid red;
 }
 
 /*############################*/
@@ -37,4 +89,10 @@
 
 .sub--contacts {
 /*div structure label fl name phone email*/
+}
+
+.maindata--div {
+  margin: 20px 300px;
+  padding: 20px;
+  border: 1px solid blue;
 }

@@ -50,13 +50,13 @@ app.post('/api/notes', (request, response) => {
   const lastName = request.body.lastName;
   const phone = request.body.phone;
   const email = request.body.email;
-  const note = request.body.note;
+  const notice = request.body.notice;
 
   db.query('INSERT INTO NEWNAMETABLE (id, date,\
     hour, location, firstName, lastName, phone,\
-    email, note) VALUES (?,?,?,?,?,?)',
+    email, notice) VALUES (?,?,?,?,?,?)',
     [id, date, hour, location, firstName, lastName,
-    phone, email,note], (err, result) => {
+    phone, email,notice], (err, result) => {
       if (err) {
         console.log(err, result)
       }
@@ -75,11 +75,11 @@ app.put('/api/notes/:id', (request, response) => {
   const lastName = request.body.lastName;
   const phone = request.body.phone;
   const email = request.body.email;
-  const note = request.body.note;
+  const notice = request.body.notice;
 
   db.query('UPDATE NEWNAMETABLE SET date=?, hour=?, location=?,\
-    firstName=?, lastName=?, phone=?, email=?, note=?, WHERE order_id=?',
-    [date, hour, location, firstName, lastName, phone, email, note, order_id],
+    firstName=?, lastName=?, phone=?, email=?, notice=?, WHERE order_id=?',
+    [date, hour, location, firstName, lastName, phone, email, notice, order_id],
     (err, result) => {
       if (err) {
         console.log(err);

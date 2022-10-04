@@ -10,12 +10,12 @@ import '../StylesPages/MeetingPoint.scss';
   lastName: string
   phone: string
   email: string
-  note: string
+  notice: string
 }
 
 (
   {date, location, firstName, 
-    lastName, phone, email, note}: DataType)
+    lastName, phone, email, notice}: DataType)
 */
 
 /*
@@ -41,7 +41,7 @@ export const MeetingPoint = () => {
   const [lastName, setLastName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [note, setNote] = useState<string>("");
+  const [notice, setNotice] = useState<string>("");
 
   const [showMeetingPoint, setShowMeetingPoint] = useState<boolean>(false);
   const [modify, setModify] = useState<boolean>(false);
@@ -67,7 +67,7 @@ export const MeetingPoint = () => {
     setLastName(lastName);
     setPhone(phone);
     setEmail(email);
-    setNote(note);
+    setNotice(notice);
   };
 
   //PUT

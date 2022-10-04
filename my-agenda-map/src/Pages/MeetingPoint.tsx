@@ -1,6 +1,6 @@
 //import React, { useState, useEffect } from 'react';
 //import { Link } from 'react-router-dom';
-//import noteServices from '../Services/noteServices';
+//import meetingServices from '../Services/meetingServices';
 import '../StylesPages/MeetingPoint.scss';
 
 /*interface DataType {
@@ -49,7 +49,7 @@ export const MeetingPoint = () => {
   const MAPPING = "https://wego.here.com/directions/mix//";
 
   useEffect(() => {
-    noteServices
+    meetingServices
       .getAll()
       .then(initialNote => {
         setDatas(initialNote);

@@ -31,8 +31,10 @@ db.connect( (err) => {
     }
 });
 
-app.get('/api/notes', (request, response) => {
-  db.query('SELECT * from MEMBERPARKNOTRIGHT', (err, result) => {
+app.get('/api/meeting', (request, response) => {
+
+
+  db.query('SELECT * from meetingpoint', (err, result) => {
     if (err) {
       console.log(err)
     } else {
@@ -41,7 +43,7 @@ app.get('/api/notes', (request, response) => {
   }) 
 });
 
-app.post('/api/notes', (request, response) => {
+app.post('/api/meeting', (request, response) => {
   const id = request.body.id;
   const date = request.body.date;
   const hour = request.body.hour;
@@ -52,7 +54,7 @@ app.post('/api/notes', (request, response) => {
   const email = request.body.email;
   const notice = request.body.notice;
 
-  db.query('INSERT INTO NEWNAMETABLE (id, date,\
+  db.query('INSERT INTO meetingpoint (id, date,\
     hour, location, firstName, lastName, phone,\
     email, notice) VALUES (?,?,?,?,?,?)',
     [id, date, hour, location, firstName, lastName,
@@ -66,7 +68,7 @@ app.post('/api/notes', (request, response) => {
     })
 });
 
-app.put('/api/notes/:id', (request, response) => {
+app.put('/api/meeting/:id', (request, response) => {
   const id = request.body.id;
   const date = request.body.date;
   const hour = request.body.hour;
@@ -77,7 +79,7 @@ app.put('/api/notes/:id', (request, response) => {
   const email = request.body.email;
   const notice = request.body.notice;
 
-  db.query('UPDATE NEWNAMETABLE SET date=?, hour=?, location=?,\
+  db.query('UPDATE meetingpoint SET date=?, hour=?, location=?,\
     firstName=?, lastName=?, phone=?, email=?, notice=?, WHERE order_id=?',
     [date, hour, location, firstName, lastName, phone, email, notice, order_id],
     (err, result) => {
@@ -90,10 +92,10 @@ app.put('/api/notes/:id', (request, response) => {
   );
 });
 
-app.delete('/api/notes/:order_id', (request, response) => {
+app.delete('/api/meeting/:order_id', (request, response) => {
   const order_id = request.params.order_id;
 
-  db.query('DELETE FROM NEWNAMETABLE WHERE order_id=?', order_id, (err, result) => {
+  db.query('DELETE FROM meetingpoint WHERE order_id=?', order_id, (err, result) => {
     if (err) {
       console.log(err);
     } else {

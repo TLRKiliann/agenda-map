@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 //const routeLogin = require('./routes/Login');
 //const routeSignUp = require('./routes/SignUp');
 
+const PORT = 4002;
 app.use(express.json());
 app.use(cors());
 
@@ -31,8 +32,8 @@ db.connect( (err) => {
     }
 });
 
-app.get('/api/notes', (request, response) => {
-  db.query('SELECT * from MEMBERPARKNOTRIGHT', (err, result) => {
+app.get('/api/getAllMembers', (request, response) => {
+  db.query('SELECT * from meetingpoint', (err, result) => {
     if (err) {
       console.log(err)
     } else {
@@ -41,7 +42,7 @@ app.get('/api/notes', (request, response) => {
   }) 
 });
 
-app.post('/api/notes', (request, response) => {
+app.post('/api/create', (request, response) => {
   const id = request.body.id;
   const date = request.body.date;
   const hour = request.body.hour;
@@ -50,13 +51,13 @@ app.post('/api/notes', (request, response) => {
   const lastName = request.body.lastName;
   const phone = request.body.phone;
   const email = request.body.email;
-  const note = request.body.note;
+  const notice = request.body.notice;
 
-  db.query('INSERT INTO NEWNAMETABLE (id, date,\
+  db.query('INSERT INTO meetingpoint (id, date,\
     hour, location, firstName, lastName, phone,\
-    email, note) VALUES (?,?,?,?,?,?)',
+    email, notice) VALUES (?,?,?,?,?,?)',
     [id, date, hour, location, firstName, lastName,
-    phone, email,note], (err, result) => {
+    phone, email, notice], (err, result) => {
       if (err) {
         console.log(err, result)
       }
@@ -66,7 +67,7 @@ app.post('/api/notes', (request, response) => {
     })
 });
 
-app.put('/api/notes/:id', (request, response) => {
+app.put('/api/update/:id', (request, response) => {
   const id = request.body.id;
   const date = request.body.date;
   const hour = request.body.hour;
@@ -75,11 +76,11 @@ app.put('/api/notes/:id', (request, response) => {
   const lastName = request.body.lastName;
   const phone = request.body.phone;
   const email = request.body.email;
-  const note = request.body.note;
+  const notice = request.body.notice;
 
-  db.query('UPDATE NEWNAMETABLE SET date=?, hour=?, location=?,\
-    firstName=?, lastName=?, phone=?, email=?, note=?, WHERE order_id=?',
-    [date, hour, location, firstName, lastName, phone, email, note, order_id],
+  db.query('UPDATE meetingpoint SET date=?, hour=?, location=?,\
+    firstName=?, lastName=?, phone=?, email=?, notice=?, WHERE id=?',
+    [date, hour, location, firstName, lastName, phone, email, notice, id],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -90,10 +91,10 @@ app.put('/api/notes/:id', (request, response) => {
   );
 });
 
-app.delete('/api/notes/:order_id', (request, response) => {
-  const order_id = request.params.order_id;
+app.delete('/api/delete/:id', (request, response) => {
+  const id = request.params.id;
 
-  db.query('DELETE FROM NEWNAMETABLE WHERE order_id=?', order_id, (err, result) => {
+  db.query('DELETE FROM meetingpoint WHERE id=?', id, (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -105,5 +106,4 @@ app.delete('/api/notes/:order_id', (request, response) => {
 //app.use('/login', routeLogin);
 //app.use('/signup', routeSignUp);
 
-const PORT = 4002;
 app.listen(PORT, () => console.log(`[+] Server is running on port ${PORT} !`));

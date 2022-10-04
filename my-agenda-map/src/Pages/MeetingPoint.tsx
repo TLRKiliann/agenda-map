@@ -1,39 +1,100 @@
-//import React, { useState, useEffect } from 'react';
-//import { Link } from 'react-router-dom';
-//import noteServices from '../Services/noteServices';
+import React, { useState, useEffect } from 'react';
+import meetingServices from '../Services/meetingServices';
+import { DataType } from '../Models/model';
 import '../StylesPages/MeetingPoint.scss';
 
-/*interface DataType {
-  date: string
-  location: string
-  firstName: string
-  lastName: string
-  phone: string
-  email: string
-  note: string
-}
 
-(
-  {date, location, firstName, 
-    lastName, phone, email, note}: DataType)
-*/
+export const MeetingPoint:React.FC = () => {
 
-/*
-Faudra balancer avec les id après dans les functions.
-*/
+//export const MeetingPoint = () => {
 
-export const MeetingPoint = () => {
+  const [datas, setDatas] = useState<Array<DataType>>([]);
+  const [secDatas, setSecDatas] = useState<Array<DataType>>([]);
+
+  useEffect(() => {
+    meetingServices
+      .getAll()
+      .then(initialNote => {
+        setDatas(initialNote);
+        setSecDatas(initialNote);
+      })
+  }, []);
+
   return (
     <div className="meetingpoint">
       <h1>Meeting Point</h1>
+      {datas.map(data => (
+        <div key={data.id} className="mainfirst--div">
+
+          <div className="first--data">
+
+            <div className="caps--div">
+              <div className="align--div">
+                <p>Date : </p>
+                <input value={data.date} />
+                <p>Hour : </p>
+                <input value={data.hour} />
+              </div>
+            </div>
+
+            <div className="caps--div">
+              <div className="align--div">
+                <p>Location : </p>
+                <input value={data.location} />
+                <button>Map</button>
+              </div>
+            </div>
+
+            <div className="caps--div">
+              <div className="align--div">
+                <p>Firstname : </p>
+                <input value={data.firstname} />
+                <p>Lastname : </p>
+                <input value={data.lastname} />              
+              </div>
+            </div>
+
+
+            <div className="caps--div">
+              <div className="align--div">
+                <p>Phone : </p>
+                <input value={data.phone} />
+                <p>Email : </p>
+                <input value={data.email} />
+              </div>
+            </div>
+
+            <div className="caps--div">
+              <div className="align--div">
+                <p>Note(s) : </p>
+                <textarea>{data.notice}</textarea>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      ))}
+
+
+      {secDatas.map(secData => (
+        <div key={secData.id}>
+          <p>{secData.date}</p>
+          <p>{secData.hour}</p>
+          <p>{secData.location}</p>
+          <p>{secData.firstname}</p>
+          <p>{secData.lastname}</p>
+          <p>{secData.phone}</p>
+          <p>{secData.email}</p>
+          <p>{secData.notice}</p>
+        </div>
+      ))}
     </div>
   )
 }
 
+
+
 /*
-  const [datas, setDatas] = useState<Array<string>>([]);
-  const [secDatas, setSecDatas] = useState<Array<string>>([]);
- 
   const [date, setDate] = useState<string>("");
   const [hour, setHour] = useState<string>("");
   const [location, setLocation] = useState<string>("");
@@ -41,7 +102,7 @@ export const MeetingPoint = () => {
   const [lastName, setLastName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [note, setNote] = useState<string>("");
+  const [notice, setNotice] = useState<string>("");
 
   const [showMeetingPoint, setShowMeetingPoint] = useState<boolean>(false);
   const [modify, setModify] = useState<boolean>(false);
@@ -49,7 +110,7 @@ export const MeetingPoint = () => {
   const MAPPING = "https://wego.here.com/directions/mix//";
 
   useEffect(() => {
-    noteServices
+    meetingServices
       .getAll()
       .then(initialNote => {
         setDatas(initialNote);
@@ -67,7 +128,7 @@ export const MeetingPoint = () => {
     setLastName(lastName);
     setPhone(phone);
     setEmail(email);
-    setNote(note);
+    setNotice(notice);
   };
 
   //PUT

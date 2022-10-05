@@ -8,17 +8,34 @@
 .meetingpoint h1 {
   font-family: 'Consolas';
   margin: 20px 20px;
+  text-shadow: 1px 1px 1px black;
+}
+
+.create--div {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+}
+
+.create--div h3 {
+  text-shadow: 1px 1px 1px black;
+}
+
+.create--div button {
+  margin: 0px 10px;
 }
 
 .mainfirst--div {
   width: 100%;
   margin: auto;
-
   display: flex;
 }
 
 .first--data {
-  width: 60%;
+  width: 700px;
   margin: 20px auto;
   padding: 20px;
   
@@ -27,46 +44,121 @@
   align-items: left;
   justify-content: left;
 
-  background: blue;
+  background: dodgerblue;
   border-radius: 15px;
-  box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px 7px black;
+  color: white;
+}
+
+.handleShow--div {
+  width: 680px;
+  margin:auto;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: right;
 }
 
 .caps--div {
   display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
-
+  flex-direction: row;
 }
 
-.align--div {
-  padding: 0px 20px;
+.left--div {
+  margin: auto;
+
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: left;
-
 }
 
-.align--div p {
+.pinput--left {
+  width: 120px;
+}
+
+.pinput--left p {
+  margin: auto;
+  margin-right: 10px;
+  display: flex;
+  justify-content: right;
+}
+
+.pinput--right {
+  margin: auto;
+  display: flex;
+  justify-content: left;
+}
+
+.hwg--a {
+  width: 200px;
+  text-align: center;
   font-family: 'Consolas';
   font-size: 1rem;
-  font-weight: bold;
+  text-decoration: none;
+
+  background: royalblue;
+  border: 1px solid royalblue;
+  border-radius: 5px;
+  color: white;
 }
 
-.align--div input {
-  margin: 0px 20px;
+.hwg--a:hover {
+  background: lightblue;
+  color: blue;
 }
 
-.align--div textarea {
-  margin: 0px 20px;
+.right--div {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
+.left--mapcaps {
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+
+/*Notice DIVS*/
+.notice--div {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justfy-content: center;
+}
+
+.ptextarea--left {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.text--area {
+  width: 560px;
+  margin: 0px 20px; 
+}
+
+.btn--meetingpoint {
+  width: 680px;
+  margin:auto;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.btn--meetingpoint button {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+/*
 .SubMeetingPoint {
 
-  border: 1px solid red;
-}
+  border: 1px solid white;
+}*/
 
 /*############################*/
 /*Div + Content*/

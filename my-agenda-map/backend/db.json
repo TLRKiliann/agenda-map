@@ -1,22 +1,37 @@
 {
-  "notes": [
+  "getAllMembers": [
     {
       "id": 1,
-      "name": "Jeffrey",
-      "number": "024 232 33 44",
-      "editNum": false
+      "date": "20/02/2022",
+      "hour": "11:30",
+      "location": "Chemin du Mottier 10, 1052 Le Mont-sur-Lausanne",
+      "firstname": "Tanja",
+      "lastname": "Fregas",
+      "phone": "077 234 55 22",
+      "email": "mk@mail.com",
+      "notice": "Blablablabla blabla... elle va encore me saouler..."
     },
     {
       "id": 2,
-      "name": "Chloe",
-      "number": "022 121 32 12",
-      "editNum": false
+      "date": "05/04/2022",
+      "hour": "11:30",
+      "location": "Chemin de Bellevue 15, 1053 Cugy",
+      "firstname": "Jim",
+      "lastname": "Roster",
+      "phone": "077 234 55 22",
+      "email": "mk@mail.com",
+      "notice": "Super tout est noté..."
     },
     {
       "id": 3,
-      "name": "Nathan",
-      "number": "022 676 77 98",
-      "editNum": false
+      "date": "10/11/2022",
+      "hour": "11:30",
+      "location": "Chemin du Mottier 10, 1052 Le Mont-sur-Lausanne",
+      "firstname": "Nimy",
+      "lastname": "Tanaka",
+      "phone": "072 453 34 34",
+      "email": "mk@mail.com",
+      "notice": "Ne pas oublier les trucs à prendre."
     }
   ]
 }

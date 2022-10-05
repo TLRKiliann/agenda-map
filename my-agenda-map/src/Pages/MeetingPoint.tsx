@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import meetingServices from '../Services/meetingServices';
 import { DataType } from '../Models/model';
+import SubMeetingPoint from './SubPages/SubMeetingPoint';
 import '../StylesPages/MeetingPoint.scss';
 
 
 export const MeetingPoint:React.FC = () => {
 
-//export const MeetingPoint = () => {
+  const [date, setDate] = useState<string>("");
+  const [hour, setHour] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [notice, setNotice] = useState<string>("");
 
+
+  //const [modify, setModify] = useState<boolean>(false);
   const [datas, setDatas] = useState<Array<DataType>>([]);
   const [secDatas, setSecDatas] = useState<Array<DataType>>([]);
 
@@ -20,59 +30,68 @@ export const MeetingPoint:React.FC = () => {
       })
   }, []);
 
+  //POST
+  const handleCreate = () => {
+    console.log("handleCreate() ok")
+  };
+
+  //PUT
+  const handleSave = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
+    event.preventDefault();
+    console.log("handleSave");
+    setDate(date);
+    setHour(hour);
+    setLocation(location);
+    setFirstName(firstName);
+    setLastName(lastName);
+    setPhone(phone);
+    setEmail(email);
+    setNotice(notice);
+  };
+
+  //PUT
+  const handleModify = (id: number) => {
+    console.log("handleModify");
+    //setModify(true);
+  };
+
+  //DELETE
+  const handleDelete = (id: number) => {
+    setDatas(datas.filter(data => data.id !== id))
+  };
+
+  //handle for map
+  /*const handleLocation = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLocation(event.target.value)
+  };*/
+
   return (
     <div className="meetingpoint">
       <h1>Meeting Point</h1>
-      {datas.map(data => (
-        <div key={data.id} className="mainfirst--div">
 
-          <div className="first--data">
-
-            <div className="caps--div">
-              <div className="align--div">
-                <p>Date : </p>
-                <input value={data.date} />
-                <p>Hour : </p>
-                <input value={data.hour} />
-              </div>
-            </div>
-
-            <div className="caps--div">
-              <div className="align--div">
-                <p>Location : </p>
-                <input value={data.location} />
-                <button>Map</button>
-              </div>
-            </div>
-
-            <div className="caps--div">
-              <div className="align--div">
-                <p>Firstname : </p>
-                <input value={data.firstname} />
-                <p>Lastname : </p>
-                <input value={data.lastname} />              
-              </div>
-            </div>
+      <div className="create--div">
+        <h3>Create New Contact : </h3>
+        <button onClick={handleCreate}>Create</button>
+      </div>
 
 
-            <div className="caps--div">
-              <div className="align--div">
-                <p>Phone : </p>
-                <input value={data.phone} />
-                <p>Email : </p>
-                <input value={data.email} />
-              </div>
-            </div>
+      {datas.map((data) => (
+        <SubMeetingPoint 
+          key={data.id}
 
-            <div className="caps--div">
-              <div className="align--div">
-                <p>Note(s) : </p>
-                <textarea>{data.notice}</textarea>
-              </div>
-            </div>
-          </div>
+          date={data.date}
+          hour={data.hour}
+          location={data.location}
+          firstname={data.firstname}
+          lastname={data.lastname}
+          phone={data.phone}
+          email={data.email}
+          notice={data.notice}
 
-        </div>
+          handleModify={() => handleModify(data.id)}
+          handleSave={(event:any) => handleSave(event, data.id)}
+          handleDelete={() => handleDelete(data.id)}
+        />
       ))}
 
 

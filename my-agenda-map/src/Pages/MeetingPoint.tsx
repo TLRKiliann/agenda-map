@@ -36,10 +36,38 @@ export const MeetingPoint:React.FC = () => {
     setCreatNewMeeting(!createNewMeeting);
   };
 
-  /*const generateId = () => {
+  //Create new appointment
+  const generateId = () => {
     const maxId = datas.length > 0 ? Math.max(...datas.map(d => d.id)) : 0
     return maxId + 1;
-  };*/
+  };
+
+  const handleSaveAppointment = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("Handle Save appointment")
+
+    const dataObject = {
+      id: generateId(),
+      date: date,
+      hour: hour,
+      location: location,
+      firstname: firstName,
+      lastname: lastName,
+      phone: phone,
+      email: email,
+      notice: notice
+    }
+
+    meetingServices
+      .create(dataObject)
+      .then(returnData => {
+        setDatas(datas.concat(dataObject))
+      })
+      .catch((error) => {
+        console.log("error with create new appointment !")
+        setDatas([])
+      })
+  }
 
   //POST
   //const handleCreate = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,9 +76,8 @@ export const MeetingPoint:React.FC = () => {
 
 
   //PUT
-  const handleSave = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
-    event.preventDefault();
-    console.log("handleSave");
+  const handleUpdate = (id: number) => {
+    console.log("handleUpdate");
     setDate(date);
     setHour(hour);
     setLocation(location);
@@ -61,11 +88,6 @@ export const MeetingPoint:React.FC = () => {
     setNotice(notice);
   };
 
-  //PUT
-  const handleModify = (id: number) => {
-    console.log("handleModify");
-    //setModify(true);
-  };
 
   //DELETE
   const handleDelete = (id: number) => {
@@ -77,7 +99,8 @@ export const MeetingPoint:React.FC = () => {
           setDatas(datas.filter(data => data?.id !== id))
         })
         .catch((error) => {
-          alert(`The note '${data?.firstname} ${data?.lastname}' was already deleted from server`)
+          alert(`The note '${data?.firstname} ${data?.lastname}'\
+            was already deleted from server`)
           setDatas(datas.filter(data => data?.id !== id))
         });
     } else {
@@ -95,11 +118,23 @@ export const MeetingPoint:React.FC = () => {
       <h1>Meeting Point</h1>
 
       <div className="create--div">
-        <h3>Create New Appointment : </h3>
-        <button onClick={handleCreate}>{createNewMeeting ? "Hide" : "Create"}</button>
+
+        <div className="appointment--switch">
+          <div style={{width: "220px"}}>
+            <h3>New Appointment : </h3>
+          </div>
+          <div>
+            <button style={{width: "100px", marginRight: "25px"}}
+              onClick={handleCreate}>
+              {createNewMeeting ? "Hide" : "Create"}
+            </button>
+          </div>
+        </div>
 
         {createNewMeeting ? (
-          <div className="display--settingsmeeting">
+          <form
+            className="display--settingsmeeting"
+            onSubmit={(event) => handleSaveAppointment(event)} >
 
             <div className="title--newappointment">
               <h2>Create New Appointment</h2>
@@ -111,6 +146,7 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="text"
+                onChange={(e) => set(e.target.value)}
                 autoFocus
                 placeholder="00/00/0000" />
             </div>
@@ -121,7 +157,8 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="text"
-                placeholder="00:00:00" />
+                onChange={(e) => set(e.target.value)}
+                placeholder="00:00" />
             </div>
             
             <div className="divMP--content">
@@ -129,8 +166,10 @@ export const MeetingPoint:React.FC = () => {
                 Location :
               </label>
               <input
+                style={{width: '240px'}}
                 type="text"
-                placeholder="Chemin du Mottier 10, 1052 Le Mont-sur-Lausanne" />
+                onChange={(e) => set(e.target.value)}
+                placeholder="Chemin du Devin, 1012 Lausanne" />
             </div>
             
             <div className="divMP--content">
@@ -139,7 +178,7 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="text"
-
+                onChange={(e) => set(e.target.value)}
                 placeholder="firstname" />
             </div>
 
@@ -149,7 +188,7 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="text"
-
+                onChange={(e) => set(e.target.value)}
                 placeholder="lastname" />
             </div>
 
@@ -159,7 +198,7 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="text"
-
+                onChange={(e) => set(e.target.value)}
                 placeholder="333 333 22 22" />
             </div>
 
@@ -169,34 +208,41 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="email"
-
+                onChange={(e) => set(e.target.value)}
                 placeholder="super.man@mail.uk" />
             </div>
 
-            <div className="divMP--content">
-              <label>
-                Note(s) :
-              </label>
-              <textarea
-                rows={5}
-                cols={50}
-                wrap="soft"
-                placeholder="Write something here...">
-              </textarea>
+            <div className="div--textarealabel">
+              <div className="noticelabel--div">
+                <label>
+                  Note(s) :
+                </label>
+              </div>
+              <div>
+                <textarea
+                  rows={5}
+                  cols={66}
+                  wrap="soft"
+                  onChange={(e) => set(e.target.value)}
+                  placeholder="Write something here...">
+                </textarea>
+              </div>
             </div>
 
             <div className="divbtn--createmeeting">
-              <button className="btn--createmeeting">
+              <button
+                type="submit"
+                className="btn--createmeeting"
+              >
                 Save New Appointment
               </button>
             </div>
 
-          </div>
+          </form>
 
         ) : null}
 
       </div>
-
 
       {datas.map((data) => (
         <SubMeetingPoint 
@@ -211,12 +257,10 @@ export const MeetingPoint:React.FC = () => {
           email={data.email}
           notice={data.notice}
 
-          handleModify={() => handleModify(data.id)}
-          handleSave={(event:any) => handleSave(event, data.id)}
+          handleUpdate={() => handleUpdate(data.id)}
           handleDelete={() => handleDelete(data.id)}
         />
       ))}
-
 
       {secDatas.map(secData => (
         <div key={secData.id}>
@@ -230,207 +274,7 @@ export const MeetingPoint:React.FC = () => {
             {secData.notice}</p>
         </div>
       ))}
+
     </div>
   )
 }
-
-
-
-/*
-  const [date, setDate] = useState<string>("");
-  const [hour, setHour] = useState<string>("");
-  const [location, setLocation] = useState<string>("");
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [notice, setNotice] = useState<string>("");
-
-  const [showMeetingPoint, setShowMeetingPoint] = useState<boolean>(false);
-  const [modify, setModify] = useState<boolean>(false);
-
-  const MAPPING = "https://wego.here.com/directions/mix//";
-
-  useEffect(() => {
-    meetingServices
-      .getAll()
-      .then(initialNote => {
-        setDatas(initialNote);
-        setSecDatas(initialNote);
-      })
-  }, []);
-
-  //POST
-  const handleSave = (e: React.FormEvent, id: number) => {
-    console.log("handleSave");
-    setDate(date);
-    setHour(hour);
-    setLocation(location);
-    setFirstName(firstName);
-    setLastName(lastName);
-    setPhone(phone);
-    setEmail(email);
-    setNotice(notice);
-  };
-
-  //PUT
-  const handleModify = (id: number) => {
-    console.log("handleModify");
-    setModify(true);
-  };
-
-  //DELETE
-  const handleDelete = (id: number) => {
-    console.log("handleDelete");
-  };
-
-  //handle for map
-  const handleLocation = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLocation(event.target.value)
-  };
-
-  //MAP location
-  /*const handleMap = (id: number) => {
-    console.log("handleMap");
-    const localisation = datas.find(data => data.id === id)
-  };
-
-  return (
-    <div className="MeetingPoint">
-
-      <div className="SubMeetingPoint">
-
-        <div className="titleMP--div">
-          <h1>
-            Meeting Point
-          </h1>
-        </div>
-
-        <div className="newmeetingpoint">
-          <h2>Add a new Meeting Point</h2>
-          <button onClick={() => setShowMeetingPoint(!showMeetingPoint)}>
-            New Meeting Point
-          </button>
-        </div>
-
-        {showMeetingPoint ? (
-          <div className="display--settingsmeeting">
-
-            <div className="divMP--content">
-              <label>
-                Date :
-              </label>
-              <input
-                type="text"
-                autoFocus
-                placeholder="00/00/0000" />
-              <label>
-                Hour :
-              </label>
-              <input
-                type="text"
-                placeholder="00:00:00" />
-            </div>
-            
-            <div className="divMP--content">
-              <label>
-                Location :
-              </label>
-              <input
-                type="text"
-                value={location}
-                onChange={handleLocation}
-                placeholder="ex: Chemin du Mottier 10, 1052 Le Mont-sur-Lausanne" />
-            </div>
-            
-            <div className="divMP--content">
-
-              <div className="sub--contacts">
-                <label>
-                  Contact :
-                </label>
-                <input
-                  type="text"
-
-                  placeholder="firstname" />
-                <input
-                  type="text"
-
-                  placeholder="lastname" />
-
-                <label>
-                  Phone Number :
-                </label>
-                <input
-                  type="text"
-
-                  placeholder="ex: 333 333 22 22" />
-
-                <label>
-                  Email :
-                </label>
-                <input
-                  type="email"
-
-                  placeholder="ex: super.man@mail.uk" />
-              </div>
-
-            </div>
-
-            <div className="divMP--content">
-              <label>
-                Note(s) :
-              </label>
-              <textarea
-                rows={4}
-                cols={20}
-                wrap="soft"
-                placeholder="Write something here...">
-              </textarea>
-            </div>
-
-          </div>
-        ) : null}
-
-        {datas.map(data => (
-          <div key={data.id} className="result--div">
-
-            <div className="datas--meetingpoint">
-              <input value={data.date} />
-              <input value={data.hour} />
-              <input value={data.location} />
-              <input value={data.firstName} />
-              <input value={data.lastName} />
-              <input value={data.phone} />
-              <input value={data.email} />
-              <input value={data.note} />
-            </div>
-
-            <div className="btn--meetingpoint">
-              <button onClick={() => handleModify(data.id)}>
-                Modify
-              </button>
-
-              <button onClick={() => handleSave(e, data.id)}>
-                Save
-              </button>
-
-              <button onClick={() => handleDelete(data.id)}>
-                Delete
-              </button>
-
-              <a href={`${MAPPING} ${location}`} className="hwg--a">
-                Here We Go!
-              </a>
-
-            </div>
-
-          </div>
-        ))}
-
-      </div>
-    </div>
-  )
-}*/
-
-//              <Link to="/MapMap" location={location} onClick={() => handleMap(data.id)}>

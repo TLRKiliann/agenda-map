@@ -7,6 +7,9 @@ import '../StylesPages/MeetingPoint.scss';
 
 export const MeetingPoint:React.FC = () => {
 
+  const [datas, setDatas] = useState<Array<DataType | any>>([]);
+  const [secDatas, setSecDatas] = useState<Array<DataType | any>>([]);
+
   const [date, setDate] = useState<string>("");
   const [hour, setHour] = useState<string>("");
   const [location, setLocation] = useState<string>("");
@@ -16,10 +19,9 @@ export const MeetingPoint:React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [notice, setNotice] = useState<string>("");
 
+  const [createNewMeeting, setCreatNewMeeting] = useState<boolean>(false);
 
   //const [modify, setModify] = useState<boolean>(false);
-  const [datas, setDatas] = useState<Array<DataType>>([]);
-  const [secDatas, setSecDatas] = useState<Array<DataType>>([]);
 
   useEffect(() => {
     meetingServices
@@ -30,10 +32,20 @@ export const MeetingPoint:React.FC = () => {
       })
   }, []);
 
-  //POST
   const handleCreate = () => {
-    console.log("handleCreate() ok")
+    setCreatNewMeeting(!createNewMeeting);
   };
+
+  /*const generateId = () => {
+    const maxId = datas.length > 0 ? Math.max(...datas.map(d => d.id)) : 0
+    return maxId + 1;
+  };*/
+
+  //POST
+  //const handleCreate = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //  console.log("handleCreate() ok")
+  //};
+
 
   //PUT
   const handleSave = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
@@ -57,7 +69,20 @@ export const MeetingPoint:React.FC = () => {
 
   //DELETE
   const handleDelete = (id: number) => {
-    setDatas(datas.filter(data => data.id !== id))
+    const data = datas.find(data => data?.id === id);
+    if (window.confirm(`Delete ${data?.firstname} ${data?.lastname} ?`)) {
+      meetingServices
+        .remove(id)
+        .then(returnData => {
+          setDatas(datas.filter(data => data?.id !== id))
+        })
+        .catch((error) => {
+          alert(`The note '${data?.firstname} ${data?.lastname}' was already deleted from server`)
+          setDatas(datas.filter(data => data?.id !== id))
+        });
+    } else {
+      return null;
+    }
   };
 
   //handle for map
@@ -70,14 +95,112 @@ export const MeetingPoint:React.FC = () => {
       <h1>Meeting Point</h1>
 
       <div className="create--div">
-        <h3>Create New Contact : </h3>
-        <button onClick={handleCreate}>Create</button>
+        <h3>Create New Appointment : </h3>
+        <button onClick={handleCreate}>{createNewMeeting ? "Hide" : "Create"}</button>
+
+        {createNewMeeting ? (
+          <div className="display--settingsmeeting">
+
+            <div className="title--newappointment">
+              <h2>Create New Appointment</h2>
+            </div>
+
+            <div className="divMP--content">
+              <label>
+                Date :
+              </label>
+              <input
+                type="text"
+                autoFocus
+                placeholder="00/00/0000" />
+            </div>
+
+            <div className="divMP--content">
+              <label>
+                Hour :
+              </label>
+              <input
+                type="text"
+                placeholder="00:00:00" />
+            </div>
+            
+            <div className="divMP--content">
+              <label>
+                Location :
+              </label>
+              <input
+                type="text"
+                placeholder="Chemin du Mottier 10, 1052 Le Mont-sur-Lausanne" />
+            </div>
+            
+            <div className="divMP--content">
+              <label>
+                Firstname :
+              </label>
+              <input
+                type="text"
+
+                placeholder="firstname" />
+            </div>
+
+            <div className="divMP--content">
+              <label>
+                Lastname :
+              </label>
+              <input
+                type="text"
+
+                placeholder="lastname" />
+            </div>
+
+            <div className="divMP--content">
+              <label>
+                Phone Number :
+              </label>
+              <input
+                type="text"
+
+                placeholder="333 333 22 22" />
+            </div>
+
+            <div className="divMP--content">
+              <label>
+                Email :
+              </label>
+              <input
+                type="email"
+
+                placeholder="super.man@mail.uk" />
+            </div>
+
+            <div className="divMP--content">
+              <label>
+                Note(s) :
+              </label>
+              <textarea
+                rows={5}
+                cols={50}
+                wrap="soft"
+                placeholder="Write something here...">
+              </textarea>
+            </div>
+
+            <div className="divbtn--createmeeting">
+              <button className="btn--createmeeting">
+                Save New Appointment
+              </button>
+            </div>
+
+          </div>
+
+        ) : null}
+
       </div>
 
 
       {datas.map((data) => (
         <SubMeetingPoint 
-          key={data.id}
+          key={data?.id}
 
           date={data.date}
           hour={data.hour}
@@ -97,14 +220,14 @@ export const MeetingPoint:React.FC = () => {
 
       {secDatas.map(secData => (
         <div key={secData.id}>
-          <p>{secData.date}</p>
-          <p>{secData.hour}</p>
-          <p>{secData.location}</p>
-          <p>{secData.firstname}</p>
-          <p>{secData.lastname}</p>
-          <p>{secData.phone}</p>
-          <p>{secData.email}</p>
-          <p>{secData.notice}</p>
+          <p>{secData.date}
+            {secData.hour}
+            {secData.location}
+            {secData.firstname}
+            {secData.lastname}
+            {secData.phone}
+            {secData.email}
+            {secData.notice}</p>
         </div>
       ))}
     </div>

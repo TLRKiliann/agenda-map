@@ -1,15 +1,15 @@
 export type DataType = {
-  id: number
-  date: string
-  hour: string
-  location: string
-  firstname: string
-  lastname: string
-  phone: string
-  email: string
-  notice: string
+  id?: any | null;
+  date: string;
+  hour: string;
+  location: string;
+  firstname: string;
+  lastname: string;
+  phone: string;
+  email: string;
+  notice: string;
 };
 
 export type DataTypeProps = {
-  datatype: DataType
+  datatype: DataType;
 };

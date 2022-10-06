@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 //import { DataType } from '../../Models/model';
 import { AiFillEye } from 'react-icons/ai';
 import { FaRegEyeSlash } from 'react-icons/fa';
+import { MdOutlineMyLocation } from 'react-icons/md';
 import '../../StylesPages/MeetingPoint.scss';
 
 type SubMeetingPointProps = {
@@ -36,18 +37,14 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
       <div className="first--data">
 
-        <div className="handleShow--div">
-          <button onClick={handleShow}
-            className="handleShow--btn">
-            {showMeetingPoint 
-              ? <FaRegEyeSlash size={24} style={styles} /> 
-              : <AiFillEye size={24} style={styles} />}
-          </button>
-        </div>
-
-        <div className="caps--div">
+        <div className="capsbtn--div">
           <div className="left--div">
             <div className="pinput--left">
+              <button onClick={handleShow}>
+                {showMeetingPoint 
+                  ? <FaRegEyeSlash size={24} style={styles} /> 
+                  : <AiFillEye size={24} style={styles} />}
+              </button>
               <p>Date : </p>
             </div>
             <div className="pinput--right">
@@ -68,26 +65,29 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
           <div>
             <div className="caps--div">
               <div className="left--mapcaps">
-                <div className="pinput--left">
+                <div className="p--left">
                   <p>Location : </p>
                 </div>
-                <div className="pinput--right">
+                <div className="locationinput--right">
                   <input value={props.location}/>
                 </div>
               </div>
+            </div>
 
+            <div className="caps--div">
               <div className="left--mapcaps">
-                <div className="pinput--left">
+                <div className="p--left">
                   <p>See map : </p>
                 </div>
-                <div className="pinput--right">
+                <div className="mapbtn--right">
                   <a
                     href={`${MAPPING} ${props.location}`}
                     target="_blank"
+                    title="Go to map !"
                     rel="noreferrer" 
                     className="hwg--a"
                   >
-                    Here We Go!
+                    <MdOutlineMyLocation size={24} />
                   </a>
                 </div>
               </div>
@@ -135,7 +135,9 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
               <div className="notice--div">
                 <div className="ptextarea--left">
                   <p>Note(s) : </p>
-                  <textarea className="text--area" value={props.notice} />
+                  <textarea
+                    className="text--area" 
+                    value={props.notice} />
                 </div>
               </div>
             </div>

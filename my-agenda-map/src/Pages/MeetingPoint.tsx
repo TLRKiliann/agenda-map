@@ -13,15 +13,13 @@ export const MeetingPoint:React.FC = () => {
   const [date, setDate] = useState<string>("");
   const [hour, setHour] = useState<string>("");
   const [location, setLocation] = useState<string>("");
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
+  const [firstname, setFirstname] = useState<string>("");
+  const [lastname, setLastname] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [notice, setNotice] = useState<string>("");
 
   const [createNewMeeting, setCreatNewMeeting] = useState<boolean>(false);
-
-  //const [modify, setModify] = useState<boolean>(false);
 
   useEffect(() => {
     meetingServices
@@ -36,7 +34,7 @@ export const MeetingPoint:React.FC = () => {
     setCreatNewMeeting(!createNewMeeting);
   };
 
-  //Create new appointment
+  //Create new appointment (POST method)
   const generateId = () => {
     const maxId = datas.length > 0 ? Math.max(...datas.map(d => d.id)) : 0
     return maxId + 1;
@@ -51,8 +49,8 @@ export const MeetingPoint:React.FC = () => {
       date: date,
       hour: hour,
       location: location,
-      firstname: firstName,
-      lastname: lastName,
+      firstname: firstname,
+      lastname: lastname,
       phone: phone,
       email: email,
       notice: notice
@@ -69,25 +67,24 @@ export const MeetingPoint:React.FC = () => {
       })
   }
 
-  //POST
-  //const handleCreate = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //  console.log("handleCreate() ok")
-  //};
-
-
-  //PUT
+  //Update (PUT method)
   const handleUpdate = (id: number) => {
     console.log("handleUpdate");
-    setDate(date);
-    setHour(hour);
-    setLocation(location);
-    setFirstName(firstName);
-    setLastName(lastName);
-    setPhone(phone);
-    setEmail(email);
-    setNotice(notice);
-  };
+    const data = datas.find(data => data.id === id)
+    console.log("---data---", data)
+    const changeNotes = {...data, firstname: data.firstname};
+    setFirstname(data ? data.firstname : null)
 
+    meetingServices
+      .update(changeNotes, id)
+      .then(returnData => {
+        setDatas(datas.map(data => data.id === id ? returnData : data))
+      })
+      .catch((error) => {
+        console.log("error with update", error)
+        setDatas(datas.filter(d => d.id !== id))
+      })
+  };
 
   //DELETE
   const handleDelete = (id: number) => {
@@ -107,11 +104,6 @@ export const MeetingPoint:React.FC = () => {
       return null;
     }
   };
-
-  //handle for map
-  /*const handleLocation = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLocation(event.target.value)
-  };*/
 
   return (
     <div className="meetingpoint">
@@ -146,7 +138,7 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="text"
-                onChange={(e) => set(e.target.value)}
+                onChange={(e) => setDate(e.target.value)}
                 autoFocus
                 placeholder="00/00/0000" />
             </div>
@@ -157,7 +149,7 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="text"
-                onChange={(e) => set(e.target.value)}
+                onChange={(e) => setHour(e.target.value)}
                 placeholder="00:00" />
             </div>
             
@@ -168,7 +160,7 @@ export const MeetingPoint:React.FC = () => {
               <input
                 style={{width: '240px'}}
                 type="text"
-                onChange={(e) => set(e.target.value)}
+                onChange={(e) => setLocation(e.target.value)}
                 placeholder="Chemin du Devin, 1012 Lausanne" />
             </div>
             
@@ -178,7 +170,7 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="text"
-                onChange={(e) => set(e.target.value)}
+                onChange={(e) => setFirstname(e.target.value)}
                 placeholder="firstname" />
             </div>
 
@@ -188,7 +180,7 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="text"
-                onChange={(e) => set(e.target.value)}
+                onChange={(e) => setLastname(e.target.value)}
                 placeholder="lastname" />
             </div>
 
@@ -198,7 +190,7 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="text"
-                onChange={(e) => set(e.target.value)}
+                onChange={(e) => setPhone(e.target.value)}
                 placeholder="333 333 22 22" />
             </div>
 
@@ -208,7 +200,7 @@ export const MeetingPoint:React.FC = () => {
               </label>
               <input
                 type="email"
-                onChange={(e) => set(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="super.man@mail.uk" />
             </div>
 
@@ -223,7 +215,7 @@ export const MeetingPoint:React.FC = () => {
                   rows={5}
                   cols={66}
                   wrap="soft"
-                  onChange={(e) => set(e.target.value)}
+                  onChange={(e) => setNotice(e.target.value)}
                   placeholder="Write something here...">
                 </textarea>
               </div>
@@ -247,15 +239,22 @@ export const MeetingPoint:React.FC = () => {
       {datas.map((data) => (
         <SubMeetingPoint 
           key={data?.id}
-
           date={data.date}
+          setDate={data.setDate}
           hour={data.hour}
+          setHour={data.setHour}
           location={data.location}
+          setLocation={data.setLocation}
           firstname={data.firstname}
+          setFirstname={data.setFirstname}
           lastname={data.lastname}
+          setLastname={data.Lastname}
           phone={data.phone}
+          setPhone={data.setPhone}
           email={data.email}
+          setEmail={data.setEmail}
           notice={data.notice}
+          setNotice={data.setNotice}
 
           handleUpdate={() => handleUpdate(data.id)}
           handleDelete={() => handleDelete(data.id)}

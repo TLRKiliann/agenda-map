@@ -1,20 +1,33 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 //import { DataType } from '../../Models/model';
 import { AiFillEye } from 'react-icons/ai';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { MdOutlineMyLocation } from 'react-icons/md';
 import '../../StylesPages/MeetingPoint.scss';
 
+
 type SubMeetingPointProps = {
-  key: number
-  date: string
-  hour: string
-  location: string
-  firstname: string
-  lastname: string
-  phone: string
-  email: string
-  notice: string
+  key: number;
+
+  date: string;
+  setDate: React.Dispatch<React.SetStateAction<string>>;
+  hour: string;
+  setHour: React.Dispatch<React.SetStateAction<string>>;
+  location: string;
+  setLocation: React.Dispatch<React.SetStateAction<string>>;
+  
+  firstname: string;
+  setFirstname: React.Dispatch<React.SetStateAction<string>>;
+  
+  lastname: string;
+  setLastname: React.Dispatch<React.SetStateAction<string>>;
+  phone: string;
+  setPhone: React.Dispatch<React.SetStateAction<string>>;
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  notice: string;
+  setNotice: React.Dispatch<React.SetStateAction<string>>;
+
   handleUpdate: (event: React.MouseEvent<HTMLButtonElement>) => void;
   handleDelete: () => void;
 };
@@ -47,7 +60,9 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
               <p>Date : </p>
             </div>
             <div className="pinput--right">
-              <input value={props.date} />
+              <input
+                value={props.date}
+                onChange={(event) => props.setDate(event.target.value)} />
             </div>
           </div>
           <div className="right--div">
@@ -55,7 +70,9 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
               <p>Hour : </p>
             </div>
             <div className="pinput--right">
-              <input value={props.hour} />
+              <input
+                value={props.hour}
+                onChange={(event) => props.setHour(event.target.value)} />
             </div>
           </div>
         </div>
@@ -69,7 +86,9 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
               </div>
 
               <div className="input--location">
-                <input value={props.location}/>
+                <input
+                  value={props.location}
+                  onChange={(event) => props.setLocation(event.target.value)} />
               </div>  
 
               <div className="a--location">
@@ -92,7 +111,9 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   <p>Firstname : </p>
                 </div>
                 <div className="pinput--right">
-                  <input value={props.firstname} />
+                  <input
+                    value={props.firstname}
+                    onChange={(event) => props.setFirstname(event.target.value)} />
                 </div>
               </div>
               <div className="right--div">
@@ -100,7 +121,9 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   <p>Lastname : </p>
                 </div>
                 <div className="pinput--right">
-                  <input value={props.lastname} />              
+                  <input
+                    value={props.lastname}
+                    onChange={(event) => props.setLastname(event.target.value)} />             
                 </div>
               </div>
             </div>
@@ -111,7 +134,9 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   <p>Phone : </p>
                 </div>
                 <div className="pinput--right">
-                  <input value={props.phone} />
+                  <input
+                    value={props.phone}
+                    onChange={(event) => props.setPhone(event.target.value)} />
                 </div>
               </div>
               <div className="right--div">
@@ -119,7 +144,9 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   <p>Email : </p>
                 </div>
                 <div className="pinput--right">
-                  <input value={props.email} />
+                  <input
+                    value={props.email}
+                    onChange={(event) => props.setEmail(event.target.value)} />
                 </div>
               </div>
             </div>
@@ -130,7 +157,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   <p>Note(s) : </p>
                   <textarea
                     className="text--area" 
-                    value={props.notice} />
+                    value={props.notice} onChange={(event) => props.setNotice(event.target.value)} />
                 </div>
               </div>
             </div>

@@ -15,8 +15,8 @@ export const Login = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
     console.log("Submit")
     setTurnLogin(!turnLogin);
   };
@@ -58,7 +58,7 @@ export const Login = () => {
 
         {turnLogin ? (
           <div className="loginok">
-            <p>Login OK !</p>
+            <p>Login Successfully !</p>
           </div>
           ) : (
           <div className="notification">

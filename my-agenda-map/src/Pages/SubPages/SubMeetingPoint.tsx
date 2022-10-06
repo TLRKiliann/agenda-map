@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 //import { DataType } from '../../Models/model';
 import { AiFillEye } from 'react-icons/ai';
 import { FaRegEyeSlash } from 'react-icons/fa';
+import { MdOutlineMyLocation } from 'react-icons/md';
 import '../../StylesPages/MeetingPoint.scss';
 
 type SubMeetingPointProps = {
@@ -14,8 +15,7 @@ type SubMeetingPointProps = {
   phone: string
   email: string
   notice: string
-  handleModify: () => void;
-  handleSave: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleUpdate: (event: React.MouseEvent<HTMLButtonElement>) => void;
   handleDelete: () => void;
 };
 
@@ -29,25 +29,21 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
   const MAPPING = "https://wego.here.com/directions/mix//";
 
-  const styles = {display: 'flex', alignItems: 'center'}
+  const styles = {display: 'flex', alignItems: 'center'};
 
   return (
     <div className="mainfirst--div">
 
       <div className="first--data">
 
-        <div className="handleShow--div">
-          <button onClick={handleShow}
-            className="handleShow--btn">
-            {showMeetingPoint 
-              ? <FaRegEyeSlash size={24} style={styles} /> 
-              : <AiFillEye size={24} style={styles} />}
-          </button>
-        </div>
-
-        <div className="caps--div">
+        <div className="capsbtn--div">
           <div className="left--div">
             <div className="pinput--left">
+              <button onClick={handleShow}>
+                {showMeetingPoint 
+                  ? <FaRegEyeSlash size={24} style={styles} /> 
+                  : <AiFillEye size={24} style={styles} />}
+              </button>
               <p>Date : </p>
             </div>
             <div className="pinput--right">
@@ -66,31 +62,28 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
         {showMeetingPoint ? (
           <div>
-            <div className="caps--div">
-              <div className="left--mapcaps">
-                <div className="pinput--left">
-                  <p>Location : </p>
-                </div>
-                <div className="pinput--right">
-                  <input value={props.location}/>
-                </div>
+            <div className="caps--location">
+
+              <div className="p--location">
+                <p>Location : </p>
               </div>
 
-              <div className="left--mapcaps">
-                <div className="pinput--left">
-                  <p>See map : </p>
-                </div>
-                <div className="pinput--right">
-                  <a
-                    href={`${MAPPING} ${props.location}`}
-                    target="_blank"
-                    rel="noreferrer" 
-                    className="hwg--a"
-                  >
-                    Here We Go!
-                  </a>
-                </div>
+              <div className="input--location">
+                <input value={props.location}/>
+              </div>  
+
+              <div className="a--location">
+                <a
+                  href={`${MAPPING} ${props.location}`}
+                  target="_blank"
+                  title="Go to map !"
+                  rel="noreferrer" 
+                  className="hwg--a"
+                >
+                  <MdOutlineMyLocation size={24} />
+                </a>
               </div>
+                
             </div>
 
             <div className="caps--div">
@@ -135,18 +128,16 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
               <div className="notice--div">
                 <div className="ptextarea--left">
                   <p>Note(s) : </p>
-                  <textarea className="text--area" value={props.notice} />
+                  <textarea
+                    className="text--area" 
+                    value={props.notice} />
                 </div>
               </div>
             </div>
 
             <div className="btn--meetingpoint">
-              <button onClick={props.handleModify}>
-                Modify
-              </button>
-
-              <button onClick={props.handleSave}>
-                Save
+              <button onClick={props.handleUpdate}>
+                Update
               </button>
 
               <button onClick={props.handleDelete}>

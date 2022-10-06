@@ -1,8 +1,19 @@
-/*############################*/
-/*Div + MAIN*/
-
 .meetingpoint {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 
+.meetingpoint h1 {
+  font-family: 'Consolas';
+  margin: 20px 20px;
+  text-shadow: 1px 1px 1px black;
+}
+
+.appointment--switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .display--settingsmeeting {
@@ -12,27 +23,41 @@
   display: flex;
   flex-direction: column;
 
+  font-family: 'Consolas';
+
   background: blue;
-  border: 1px solid white;
+  border: 1px solid blue;
   border-radius: 15px;
+  box-shadow: 0px 0px 3px blue;
 }
 
 .title--newappointment {
   display: flex;
   justify-content: center;
-  font-family: 'Consolas'; 
 }
 
 .divMP--content {
+  margin: 5px 0px;
   display: flex;
   align-items: center;
   justify-content: right;
+  font-weight: bold;
 }
 
 .divMP--content input {
+  margin-right: 80px;
   margin-left: 10px;
 }
 
+.div--textarealabel label {
+  margin: 5px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-weight: bold;
+}
+
+/*BTN Save New Appointment*/
 .divbtn--createmeeting {
   margin-top: 20px;
   display: flex;
@@ -53,12 +78,6 @@
   background: lightblue;
   border: 1px solid lightblue;
   color: blue;
-}
-
-.meetingpoint h1 {
-  font-family: 'Consolas';
-  margin: 20px 20px;
-  text-shadow: 1px 1px 1px black;
 }
 
 .create--div {
@@ -114,7 +133,6 @@
 
 .left--div {
   margin: auto;
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -124,6 +142,8 @@
   width: 120px;
   display: flex;
   align-items: center;
+  font-family: 'Consolas';
+  font-weight: bold;
 }
 
 .pinput--left p {
@@ -133,36 +153,42 @@
   justify-content: right;
 }
 
-.p--left {
-  margin-left: 42px;
+/*Location-Map second component*/
+
+.caps--location {
+  margin: 10px 14px;
+
   display: flex;
-  justify-content: right;
+  align-items: center;
+  justify-content: left;
 }
 
-.p--left p {
-  margin: auto;
+.p--location {
+  margin-left: 20px;
 }
 
-.pinput--right {
+.p--location p {
   margin: auto;
+
+  font-family: 'Consolas';
+  font-weight: bold;
+}
+
+.input--location {
+  margin: auto;
+  
+  width: 500px;
   display: flex;
   justify-content: left;
 }
 
-.locationinput--right input {
-  width: 544px;
-  margin-left: 12px;
-}
-
-.mapbtn--right {
-  margin-left: 12px;
-  display: flex;
-  justify-content: left;
+.input--location input {
+  width: 500px;
 }
 
 .hwg--a {
   width: 40px;
-  padding: 2px 0px;
+  padding: 4px 0px;
   
   display: flex;
   align-items: center;
@@ -185,12 +211,7 @@
   align-items: center;
 }
 
-.left--mapcaps {
-  display: flex;
-  align-items: center;
-}
-
-/*Notice DIVS*/
+/*Textarea of second component*/
 .notice--div {
   margin: auto;
   display: flex;
@@ -205,11 +226,16 @@
   align-items: center;
 }
 
+.ptextarea--left p {
+  font-weight: bold;
+}
+
 .text--area {
-  width: 530px;
+  width: 544px;
   margin: 0px 10px; 
 }
 
+/*BTN of second component*/
 .btn--meetingpoint {
   width: 680px;
   margin:auto;
@@ -221,42 +247,4 @@
 .btn--meetingpoint button {
   margin-top: 5px;
   margin-left: 10px;
-}
-
-
-
-
-/*
-.SubMeetingPoint {
-
-  border: 1px solid white;
-}*/
-
-/*############################*/
-/*Div + Content*/
-.titleMP--div {
-
-  border: 1px solid lightgreen;
-}
-
-.divMP--content {
-
-  border: 1px solid hotpink;
-}
-
-/*############################*/
-/*Div + BTN*/
-.result--div {
-
-  border: 1px solid lightblue;
-}
-
-.sub--contacts {
-/*div structure label fl name phone email*/
-}
-
-.maindata--div {
-  margin: 20px 300px;
-  padding: 20px;
-  border: 1px solid blue;
 }

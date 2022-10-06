@@ -5,6 +5,56 @@
 
 }
 
+.display--settingsmeeting {
+  width: 100%;
+  padding: 20px 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+
+  background: blue;
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+.title--newappointment {
+  display: flex;
+  justify-content: center;
+  font-family: 'Consolas'; 
+}
+
+.divMP--content {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.divMP--content input {
+  margin-left: 10px;
+}
+
+.divbtn--createmeeting {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn--createmeeting {
+  padding: 3px 10px;
+  background: royalblue;
+  border: 1px solid royalblue;
+  border-radius: 3px;
+  box-shadow: 0px 0px 3px white;
+  color: whitesmoke;
+}
+
+.btn--createmeeting:hover {
+  background: lightblue;
+  border: 1px solid lightblue;
+  color: blue;
+}
+
 .meetingpoint h1 {
   font-family: 'Consolas';
   margin: 20px 20px;
@@ -36,7 +86,7 @@
 
 .first--data {
   width: 700px;
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 20px;
   
   display: flex;
@@ -46,19 +96,18 @@
 
   background: dodgerblue;
   border-radius: 15px;
-  box-shadow: 0px 0px 7px black;
+  box-shadow: 0px 0px 3px black;
   color: white;
 }
 
-.handleShow--div {
-  width: 680px;
-  margin:auto;
-  margin-bottom: 5px;
+.capsbtn--div {
+  margin: 0px 0px;
   display: flex;
-  justify-content: right;
+  flex-direction: row;
 }
 
 .caps--div {
+  margin: 10px 0px;
   display: flex;
   flex-direction: row;
 }
@@ -73,6 +122,8 @@
 
 .pinput--left {
   width: 120px;
+  display: flex;
+  align-items: center;
 }
 
 .pinput--left p {
@@ -82,22 +133,43 @@
   justify-content: right;
 }
 
+.p--left {
+  margin-left: 42px;
+  display: flex;
+  justify-content: right;
+}
+
+.p--left p {
+  margin: auto;
+}
+
 .pinput--right {
   margin: auto;
   display: flex;
   justify-content: left;
 }
 
+.locationinput--right input {
+  width: 544px;
+  margin-left: 12px;
+}
+
+.mapbtn--right {
+  margin-left: 12px;
+  display: flex;
+  justify-content: left;
+}
+
 .hwg--a {
-  width: 200px;
-  text-align: center;
-  font-family: 'Consolas';
-  font-size: 1rem;
-  text-decoration: none;
+  width: 40px;
+  padding: 2px 0px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   background: royalblue;
-  border: 1px solid royalblue;
-  border-radius: 5px;
+  border-radius: 7px;
   color: white;
 }
 
@@ -114,11 +186,9 @@
 }
 
 .left--mapcaps {
-  margin: auto;
   display: flex;
   align-items: center;
 }
-
 
 /*Notice DIVS*/
 .notice--div {
@@ -126,19 +196,18 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justfy-content: center;
 }
 
 .ptextarea--left {
-
+  margin-left: 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
 .text--area {
-  width: 560px;
-  margin: 0px 20px; 
+  width: 530px;
+  margin: 0px 10px; 
 }
 
 .btn--meetingpoint {
@@ -153,6 +222,9 @@
   margin-top: 5px;
   margin-left: 10px;
 }
+
+
+
 
 /*
 .SubMeetingPoint {

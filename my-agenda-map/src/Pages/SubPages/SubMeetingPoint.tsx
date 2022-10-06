@@ -15,8 +15,7 @@ type SubMeetingPointProps = {
   phone: string
   email: string
   notice: string
-  handleModify: () => void;
-  handleSave: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleUpdate: (event: React.MouseEvent<HTMLButtonElement>) => void;
   handleDelete: () => void;
 };
 
@@ -30,7 +29,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
   const MAPPING = "https://wego.here.com/directions/mix//";
 
-  const styles = {display: 'flex', alignItems: 'center'}
+  const styles = {display: 'flex', alignItems: 'center'};
 
   return (
     <div className="mainfirst--div">
@@ -63,34 +62,28 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
         {showMeetingPoint ? (
           <div>
-            <div className="caps--div">
-              <div className="left--mapcaps">
-                <div className="p--left">
-                  <p>Location : </p>
-                </div>
-                <div className="locationinput--right">
-                  <input value={props.location}/>
-                </div>
-              </div>
-            </div>
+            <div className="caps--location">
 
-            <div className="caps--div">
-              <div className="left--mapcaps">
-                <div className="p--left">
-                  <p>See map : </p>
-                </div>
-                <div className="mapbtn--right">
-                  <a
-                    href={`${MAPPING} ${props.location}`}
-                    target="_blank"
-                    title="Go to map !"
-                    rel="noreferrer" 
-                    className="hwg--a"
-                  >
-                    <MdOutlineMyLocation size={24} />
-                  </a>
-                </div>
+              <div className="p--location">
+                <p>Location : </p>
               </div>
+
+              <div className="input--location">
+                <input value={props.location}/>
+              </div>  
+
+              <div className="a--location">
+                <a
+                  href={`${MAPPING} ${props.location}`}
+                  target="_blank"
+                  title="Go to map !"
+                  rel="noreferrer" 
+                  className="hwg--a"
+                >
+                  <MdOutlineMyLocation size={24} />
+                </a>
+              </div>
+                
             </div>
 
             <div className="caps--div">
@@ -143,12 +136,8 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
             </div>
 
             <div className="btn--meetingpoint">
-              <button onClick={props.handleModify}>
-                Modify
-              </button>
-
-              <button onClick={props.handleSave}>
-                Save
+              <button onClick={props.handleUpdate}>
+                Update
               </button>
 
               <button onClick={props.handleDelete}>

@@ -10,6 +10,7 @@ export const NavBar = () => {
 
         <div className="nav--div">
           <img
+            className="img--tag"
             width="60px" height="60px"
             src={imageLogo} alt="logo_koala"
           />

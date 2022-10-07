@@ -19,11 +19,6 @@ const getAll = () => {
   return request.then((response: any) => response.data)
 };
 
-/*const getById = (id: number) => {
-  const request = axios.get(`${getByIdUrl}/${id}`)
-  return request.then((response: any) => response.data)
-};*/
-
 const create = (newObject: any) => {
   const request = axios.post(postUrl, newObject)
   return request.then((response: any) => response.data)
@@ -44,5 +39,3 @@ const functionToCall = {
 };
 
 export default functionToCall;
-//export default { getAll, create, update, remove };
-//export default { getAll, getById, create, update, remove };

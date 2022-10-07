@@ -257,9 +257,38 @@
 .pinput--right input {
   margin: 5px 0px;
   padding: 0px 5px;
-  width: 100px;
+  width: 160px;
   font-size: 0.9rem;
   background: lightgrey;
+}
+
+.changephone--div {
+  margin: auto;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.changephone--div input {
+  width: 100px;
+  font-size: 0.9rem;
+}
+
+.changephone--div button {
+  margin-left: 10px;
+  width: 60px;
+}
+
+.changephone--btndiv {
+  margin: auto;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.changephone--btndiv button {
+  width: 60px;
+  padding: 3px 0px;
 }
 
 /*Location-Map second component*/

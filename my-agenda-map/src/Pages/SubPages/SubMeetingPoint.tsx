@@ -8,8 +8,8 @@ import '../../StylesPages/MeetingPoint.scss';
 
 type SubMeetingPointProps = {
   key: number;
-
   date: string;
+  editNum: boolean;
   setDate: React.Dispatch<React.SetStateAction<string>>;
   hour: string;
   setHour: React.Dispatch<React.SetStateAction<string>>;
@@ -23,12 +23,17 @@ type SubMeetingPointProps = {
   setLastname: React.Dispatch<React.SetStateAction<string>>;
   phone: string;
   setPhone: React.Dispatch<React.SetStateAction<string>>;
+  editPhone: string;
+
   email: string;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   notice: string;
   setNotice: React.Dispatch<React.SetStateAction<string>>;
 
+
+  handleChangeNumber: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleUpdate: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  validateNumber: () => void;
   handleDelete: () => void;
 };
 
@@ -39,6 +44,8 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
   const handleShow = () => {
     setShowMeetingPoint(!showMeetingPoint);
   };
+
+  const labelSwitch = props.editNum ? "Hide" : "Modify";
 
   const MAPPING = "https://wego.here.com/directions/mix//";
 
@@ -118,6 +125,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   <input
                     value={props.firstname}
                     onChange={(event) => props.setFirstname(event.target.value)} />
+
                 </div>
               </div>
               <div className="right--div">
@@ -133,6 +141,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
             </div>
 
             <div className="caps--div">
+              
               <div className="left--div">
                 <div className="pinput--left">
                   <p>Phone : </p>
@@ -142,17 +151,34 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                     value={props.phone}
                     onChange={(event) => props.setPhone(event.target.value)} />
                 </div>
-              </div>
-              <div className="right--div">
-                <div className="pinput--left">
-                  <p>Email : </p>
+
+                {props.editNum ? (
+                  <div className="changephone--div">
+                    <input value={props.editPhone} onChange={props.handleChangeNumber}/>
+                    <button onClick={props.validateNumber}>Save</button>
+                  </div>
+                  ) : null}
+                <div className="changephone--btndiv">
+                  <button
+                    onClick={props.handleUpdate}>
+                    {labelSwitch}
+                  </button>
                 </div>
-                <div className="pinput--right">
-                  <input
-                    value={props.email}
-                    onChange={(event) => props.setEmail(event.target.value)} />
-                </div>
               </div>
+
+              {!props.editNum ? (
+                <div className="right--div">
+                  <div className="pinput--left">
+                    <p>Email : </p>
+                  </div>
+                  <div className="pinput--right">
+                    <input
+                      value={props.email}
+                      onChange={(event) => props.setEmail(event.target.value)} />
+                  </div>
+                </div>
+              ) : null}
+
             </div>
 
             <div className="caps--div">
@@ -167,13 +193,10 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
             </div>
 
             <div className="btn--meetingpoint">
-              <button onClick={props.handleUpdate}>
-                Update
-              </button>
-
               <button
                 className="delete--btn"
-                onClick={props.handleDelete}>
+                onClick={props.handleDelete}
+              >
                 Delete
               </button>
             </div>

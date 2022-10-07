@@ -16,9 +16,11 @@ export const MeetingPoint:React.FC = () => {
   const [firstname, setFirstname] = useState<string>("");
   const [lastname, setLastname] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+
+  const [editPhone, setEditPhone] = useState<string>("");
+
   const [email, setEmail] = useState<string>("");
   const [notice, setNotice] = useState<string>("");
-
   const [createNewMeeting, setCreatNewMeeting] = useState<boolean>(false);
 
   useEffect(() => {
@@ -56,8 +58,6 @@ export const MeetingPoint:React.FC = () => {
 
   const handleSaveAppointment = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("Handle Save appointment")
-
     const dataObject = {
       id: generateId(),
       date: date,
@@ -67,7 +67,8 @@ export const MeetingPoint:React.FC = () => {
       lastname: lastname,
       phone: phone,
       email: email,
-      notice: notice
+      notice: notice,
+      editNum: false
     }
 
     meetingServices
@@ -79,25 +80,47 @@ export const MeetingPoint:React.FC = () => {
         console.log("error with create new appointment !")
         setDatas([])
       })
+    alert(`Data saved OK !`);
+    setCreatNewMeeting(false);
   }
+
+   //To change note.number
+  const handleChangeNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEditPhone(event.target.value);
+  };
 
   //Update (PUT method)
   const handleUpdate = (id: number) => {
-    console.log("handleUpdate");
     const data = datas.find(data => data.id === id)
-    console.log("---data---", data)
-    const changeNotes = {...data, firstname: data.firstname};
-    setFirstname(data ? data.firstname : null)
+    const changePhone = {...data, editNum: !data.editNum}
+    setEditPhone(data ? data.phone : null);
 
     meetingServices
-      .update(changeNotes, id)
+      .update(id, changePhone)
       .then(returnData => {
-        setDatas(datas.map(data => data.id === id ? returnData : data))
+        setDatas(datas.map(data => data.id !== id ? data : returnData))
       })
       .catch((error) => {
         console.log("error with update", error)
         setDatas(datas.filter(d => d.id !== id))
       })
+  };
+
+  const validateNumber = (id: number) => {
+    const data = datas.find(data => data.id === id);
+    const newPhone = {...data, phone: editPhone}
+
+    meetingServices
+      .update(id, newPhone)
+      .then(returnData => {
+        setDatas(datas.map(data => data.id === id ? returnData : data)
+      )})
+      .catch((error) => {
+        alert(`Phone Number: ${data.phone} not found !`)
+        setDatas(datas.filter(data => data.id !== id)
+      )})
+    setEditPhone("");
+
   };
 
   //DELETE
@@ -107,7 +130,7 @@ export const MeetingPoint:React.FC = () => {
       meetingServices
         .remove(id)
         .then(returnData => {
-          setDatas(datas.filter(data => data?.id !== id))
+          setDatas(datas?.filter(data => data?.id !== id))
         })
         .catch((error) => {
           alert(`The note '${data?.firstname} ${data?.lastname}'\
@@ -275,10 +298,17 @@ export const MeetingPoint:React.FC = () => {
           setLastname={data.Lastname}
           phone={data.phone}
           setPhone={data.setPhone}
+
+          editNum={data.editNum}
+          editPhone={editPhone}
+
           email={data.email}
           setEmail={data.setEmail}
           notice={data.notice}
           setNotice={data.setNotice}
+
+          handleChangeNumber={(event) => handleChangeNumber(event)}
+          validateNumber={() => validateNumber(data.id)}
 
           handleUpdate={() => handleUpdate(data.id)}
           handleDelete={() => handleDelete(data.id)}

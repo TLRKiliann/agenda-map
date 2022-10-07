@@ -1,4 +1,6 @@
 .login {
+  height: 100vh;
+  overflow: hidden;
 }
 
 .login h1 {
@@ -12,9 +14,9 @@
   margin: 10% auto;
   display: flex;
   flex-direction: column;
-  background: dodgerblue;
+  background: linear-gradient(170deg, royalblue, blue, navy);
   border-radius: 15px;
-  box-shadow: 0px 0px 7px black;
+  box-shadow: 0px 0px 2px #3b3c47;
 }
 
 .frame h2 {
@@ -60,24 +62,29 @@
 
 .notification p {
   width: 40%;
-  margin: 10px auto;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 30px;
   padding: 10px 10px;
 
   text-align: center;
   font-size: 1.2rem;
-  
-  border-radius: 5px;
+  background: linear-gradient(170deg, orange, red);
+  border: 1px solid blue;
+  border-radius: 20px;
   color: orange;
 }
 
 .loginok p {
-  width: 40%;
-  margin: 10px auto;
+  width: 60%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 30px;
   padding: 10px 10px;
-
   text-align: center;
   font-size: 1.2rem;
-  
-  border-radius: 5px;
+  background: linear-gradient(170deg, royalblue, blue);
+  border: 1px solid blue;
+  border-radius: 20px;
   color: lightgreen;
 }

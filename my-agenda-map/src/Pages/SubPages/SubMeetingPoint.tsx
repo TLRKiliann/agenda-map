@@ -42,7 +42,11 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
   const MAPPING = "https://wego.here.com/directions/mix//";
 
-  const styles = {display: 'flex', alignItems: 'center'};
+  const styles = {
+    display: 'flex', 
+    alignItems: 'center',
+    color: 'royalblue'
+  };
 
   return (
     <div className="mainfirst--div">
@@ -59,7 +63,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
               </button>
               <p>Date : </p>
             </div>
-            <div className="pinput--right">
+            <div className="pinput--date">
               <input
                 value={props.date}
                 onChange={(event) => props.setDate(event.target.value)} />
@@ -69,7 +73,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
             <div className="pinput--left">
               <p>Hour : </p>
             </div>
-            <div className="pinput--right">
+            <div className="pinput--hour">
               <input
                 value={props.hour}
                 onChange={(event) => props.setHour(event.target.value)} />
@@ -167,7 +171,9 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                 Update
               </button>
 
-              <button onClick={props.handleDelete}>
+              <button
+                className="delete--btn"
+                onClick={props.handleDelete}>
                 Delete
               </button>
             </div>

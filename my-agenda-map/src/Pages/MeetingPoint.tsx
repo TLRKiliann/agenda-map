@@ -30,8 +30,22 @@ export const MeetingPoint:React.FC = () => {
       })
   }, []);
 
+  const handleRefresh = () => {
+    meetingServices
+      .getAll()
+      .then(initialNote => {
+        setDatas(initialNote);
+        setSecDatas(initialNote);
+      })
+    alert("Refresh done !")
+  };
+
   const handleCreate = () => {
     setCreatNewMeeting(!createNewMeeting);
+  };
+
+  const handleReorder = () => {
+    console.log("handleReorder clicked !");
   };
 
   //Create new appointment (POST method)
@@ -112,15 +126,24 @@ export const MeetingPoint:React.FC = () => {
       <div className="create--div">
 
         <div className="appointment--switch">
-          <div style={{width: "220px"}}>
-            <h3>New Appointment : </h3>
-          </div>
-          <div>
-            <button style={{width: "100px", marginRight: "25px"}}
-              onClick={handleCreate}>
-              {createNewMeeting ? "Hide" : "Create"}
-            </button>
-          </div>
+          <button
+            onClick={handleCreate}>
+            {createNewMeeting ? "Hide Frame" : "New Appointment"}
+          </button>
+        </div>
+
+        <div className="appointment--reorder">
+          <button
+            onClick={handleReorder}>
+            Reorder
+          </button>
+        </div>
+
+        <div className="appointment--refresh">
+          <button
+            onClick={handleRefresh}>
+            Refresh Page
+          </button>
         </div>
 
         {createNewMeeting ? (
@@ -212,6 +235,7 @@ export const MeetingPoint:React.FC = () => {
               </div>
               <div>
                 <textarea
+                  className="text--area"
                   rows={5}
                   cols={66}
                   wrap="soft"

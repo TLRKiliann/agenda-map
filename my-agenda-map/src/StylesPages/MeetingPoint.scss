@@ -1,34 +1,119 @@
 .meetingpoint {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
 }
 
 .meetingpoint h1 {
   font-family: 'Consolas';
-  margin: 20px 20px;
+  margin: 0px 20px;
+  padding: 20px 0px;
   text-shadow: 1px 1px 1px black;
 }
 
 .appointment--switch {
+  position: absolute;
+  top: 170px;
+  left: 40px;
+  width: 200px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+}
+
+.appointment--switch button {
+  width: 300px;
+  padding: 5px 10px;
+  font-family: 'Consolas';
+  font-weight: bold;
+  background: #3b3c47;
+  border: 1px solid #3b3c47;
+  border-radius: 3px;
+  box-shadow: 0px 0px 1px #000;
+  color: white;
+}
+
+.appointment--switch button:hover {
+  background: lightblue;
+  border: 1px solid royalblue;
+  border-radius: 3px;
+  box-shadow: 0px 0px 0px white;
+  color: blue;
+}
+
+.appointment--reorder {
+  position: absolute;
+  top: 214px;
+  left: 40px;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.appointment--reorder button {
+  width: 300px;
+  padding: 5px 10px;
+  font-family: 'Consolas';
+  font-weight: bold;
+  background: #3b3c47;
+  border: 1px solid #3b3c47;
+  border-radius: 3px;
+  box-shadow: 0px 0px 1px #000;
+  color: white;
+}
+
+.appointment--reorder button:hover {
+  background: lightblue;
+  border: 1px solid royalblue;
+  border-radius: 3px;
+  box-shadow: 0px 0px 0px white;
+  color: blue;
+}
+
+.appointment--refresh {
+  position: absolute;
+  top: 258px;
+  left: 40px;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.appointment--refresh button {
+  width: 300px;
+  padding: 5px 10px;
+  font-family: 'Consolas';
+  font-weight: bold;
+  background: #3b3c47;
+  border: 1px solid #3b3c47;
+  border-radius: 3px;
+  box-shadow: 0px 0px 1px #000;
+  color: white;
+}
+
+.appointment--refresh button:hover {
+  background: lightblue;
+  border: 1px solid royalblue;
+  border-radius: 3px;
+  box-shadow: 0px 0px 0px white;
+  color: blue;
 }
 
 .display--settingsmeeting {
-  width: 100%;
+  position: absolute;
+  top: 20%;
+  bottom: auto;
+  left: 28%;
+  width: 580px;
   padding: 20px 20px;
-  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-
   font-family: 'Consolas';
-
-  background: blue;
-  border: 1px solid blue;
+  background: linear-gradient(170deg, royalblue, blue, navy);
   border-radius: 15px;
-  box-shadow: 0px 0px 3px blue;
+  box-shadow: 0px 0px 5px white;
 }
 
 .title--newappointment {
@@ -45,12 +130,13 @@
 }
 
 .divMP--content input {
-  margin-right: 80px;
+  margin-right: 110px;
   margin-left: 10px;
+  background: lightgrey;
 }
 
 .div--textarealabel label {
-  margin: 5px 0px;
+  margin: 10px 10px;
   display: flex;
   align-items: center;
   justify-content: left;
@@ -97,6 +183,7 @@
   margin: 0px 10px;
 }
 
+/*SubMeeting*/
 .mainfirst--div {
   width: 100%;
   margin: auto;
@@ -107,15 +194,13 @@
   width: 700px;
   margin: 10px auto;
   padding: 20px;
-  
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: left;
-
-  background: dodgerblue;
+  background: linear-gradient(170deg, #1e90ff, blue, navy);
   border-radius: 15px;
-  box-shadow: 0px 0px 3px black;
+  box-shadow: 0px 0px 2px #3b3c47;
   color: white;
 }
 
@@ -132,7 +217,7 @@
 }
 
 .left--div {
-  margin: auto;
+  margin: 0px 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -153,54 +238,108 @@
   justify-content: right;
 }
 
+.pinput--date input {
+  margin: 5px 0px;
+  padding: 0px 5px;
+  width: 80px;
+  font-size: 0.9rem;
+  background: lightgrey;
+}
+
+.pinput--hour input {
+  margin: 5px 0px;
+  padding: 0px 5px;
+  width: 40px;
+  font-size: 0.9rem;
+  background: lightgrey;
+}
+
+.pinput--right input {
+  margin: 5px 0px;
+  padding: 0px 5px;
+  width: 160px;
+  font-size: 0.9rem;
+  background: lightgrey;
+}
+
+.changephone--div {
+  margin: auto;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.changephone--div input {
+  width: 100px;
+  font-size: 0.9rem;
+}
+
+.changephone--div button {
+  margin-left: 10px;
+  width: 60px;
+}
+
+.changephone--btndiv {
+  margin: auto;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.changephone--btndiv button {
+  width: 60px;
+  padding: 3px 0px;
+}
+
 /*Location-Map second component*/
 
 .caps--location {
   margin: 10px 14px;
-
   display: flex;
   align-items: center;
   justify-content: left;
 }
 
 .p--location {
-  margin-left: 20px;
+  margin-left: 18px;
 }
 
 .p--location p {
   margin: auto;
-
   font-family: 'Consolas';
   font-weight: bold;
 }
 
 .input--location {
   margin: auto;
-  
-  width: 500px;
+  width: 504px;
   display: flex;
   justify-content: left;
 }
 
 .input--location input {
+  padding: 0px 6px;
   width: 500px;
+  font-size: 0.9rem;
+  background: lightgrey;
 }
 
 .hwg--a {
   width: 40px;
   padding: 4px 0px;
-  
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: royalblue;
+  background: linear-gradient(170deg, royalblue, navy);
+  border: 1px solid royalblue;
   border-radius: 7px;
+  box-shadow: 0px 0px 5px white;
   color: white;
 }
 
 .hwg--a:hover {
   background: lightblue;
+  box-shadow: 0px 0px 0px white;
   color: blue;
 }
 
@@ -231,8 +370,10 @@
 }
 
 .text--area {
-  width: 544px;
-  margin: 0px 10px; 
+  width: 548px;
+  margin: 0px 12px;
+  font-size: 0.9rem;
+  background: lightgrey;
 }
 
 /*BTN of second component*/
@@ -245,6 +386,29 @@
 }
 
 .btn--meetingpoint button {
+  width: 100px;
   margin-top: 5px;
-  margin-left: 10px;
+  margin-left: 30px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Consolas';
+  font-weight: bold;
+  background: linear-gradient(170deg, royalblue, navy);
+  border: 1px solid royalblue;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px white;
+  color: white;
+}
+
+.btn--meetingpoint button:hover {
+  background: lightblue;
+  border-radius: 5px;
+  box-shadow: 0px 0px 0px white;
+  color: blue;
+}
+
+.delete--btn {
+  margin-right: 4px;
 }

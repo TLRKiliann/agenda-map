@@ -1,21 +1,39 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 //import { DataType } from '../../Models/model';
 import { AiFillEye } from 'react-icons/ai';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { MdOutlineMyLocation } from 'react-icons/md';
 import '../../StylesPages/MeetingPoint.scss';
 
+
 type SubMeetingPointProps = {
-  key: number
-  date: string
-  hour: string
-  location: string
-  firstname: string
-  lastname: string
-  phone: string
-  email: string
-  notice: string
+  key: number;
+  date: string;
+  editNum: boolean;
+  setDate: React.Dispatch<React.SetStateAction<string>>;
+  hour: string;
+  setHour: React.Dispatch<React.SetStateAction<string>>;
+  location: string;
+  setLocation: React.Dispatch<React.SetStateAction<string>>;
+  
+  firstname: string;
+  setFirstname: React.Dispatch<React.SetStateAction<string>>;
+  
+  lastname: string;
+  setLastname: React.Dispatch<React.SetStateAction<string>>;
+  phone: string;
+  setPhone: React.Dispatch<React.SetStateAction<string>>;
+  editPhone: string;
+
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  notice: string;
+  setNotice: React.Dispatch<React.SetStateAction<string>>;
+
+
+  handleChangeNumber: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleUpdate: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  validateNumber: () => void;
   handleDelete: () => void;
 };
 
@@ -27,9 +45,15 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
     setShowMeetingPoint(!showMeetingPoint);
   };
 
+  const labelSwitch = props.editNum ? "Hide" : "Modify";
+
   const MAPPING = "https://wego.here.com/directions/mix//";
 
-  const styles = {display: 'flex', alignItems: 'center'};
+  const styles = {
+    display: 'flex', 
+    alignItems: 'center',
+    color: 'royalblue'
+  };
 
   return (
     <div className="mainfirst--div">
@@ -46,16 +70,20 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
               </button>
               <p>Date : </p>
             </div>
-            <div className="pinput--right">
-              <input value={props.date} />
+            <div className="pinput--date">
+              <input
+                value={props.date}
+                onChange={(event) => props.setDate(event.target.value)} />
             </div>
           </div>
           <div className="right--div">
             <div className="pinput--left">
               <p>Hour : </p>
             </div>
-            <div className="pinput--right">
-              <input value={props.hour} />
+            <div className="pinput--hour">
+              <input
+                value={props.hour}
+                onChange={(event) => props.setHour(event.target.value)} />
             </div>
           </div>
         </div>
@@ -69,7 +97,9 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
               </div>
 
               <div className="input--location">
-                <input value={props.location}/>
+                <input
+                  value={props.location}
+                  onChange={(event) => props.setLocation(event.target.value)} />
               </div>  
 
               <div className="a--location">
@@ -92,7 +122,10 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   <p>Firstname : </p>
                 </div>
                 <div className="pinput--right">
-                  <input value={props.firstname} />
+                  <input
+                    value={props.firstname}
+                    onChange={(event) => props.setFirstname(event.target.value)} />
+
                 </div>
               </div>
               <div className="right--div">
@@ -100,28 +133,52 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   <p>Lastname : </p>
                 </div>
                 <div className="pinput--right">
-                  <input value={props.lastname} />              
+                  <input
+                    value={props.lastname}
+                    onChange={(event) => props.setLastname(event.target.value)} />             
                 </div>
               </div>
             </div>
 
             <div className="caps--div">
+              
               <div className="left--div">
                 <div className="pinput--left">
                   <p>Phone : </p>
                 </div>
                 <div className="pinput--right">
-                  <input value={props.phone} />
+                  <input
+                    value={props.phone}
+                    onChange={(event) => props.setPhone(event.target.value)} />
+                </div>
+
+                {props.editNum ? (
+                  <div className="changephone--div">
+                    <input value={props.editPhone} onChange={props.handleChangeNumber}/>
+                    <button onClick={props.validateNumber}>Save</button>
+                  </div>
+                  ) : null}
+                <div className="changephone--btndiv">
+                  <button
+                    onClick={props.handleUpdate}>
+                    {labelSwitch}
+                  </button>
                 </div>
               </div>
-              <div className="right--div">
-                <div className="pinput--left">
-                  <p>Email : </p>
+
+              {!props.editNum ? (
+                <div className="right--div">
+                  <div className="pinput--left">
+                    <p>Email : </p>
+                  </div>
+                  <div className="pinput--right">
+                    <input
+                      value={props.email}
+                      onChange={(event) => props.setEmail(event.target.value)} />
+                  </div>
                 </div>
-                <div className="pinput--right">
-                  <input value={props.email} />
-                </div>
-              </div>
+              ) : null}
+
             </div>
 
             <div className="caps--div">
@@ -130,17 +187,16 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   <p>Note(s) : </p>
                   <textarea
                     className="text--area" 
-                    value={props.notice} />
+                    value={props.notice} onChange={(event) => props.setNotice(event.target.value)} />
                 </div>
               </div>
             </div>
 
             <div className="btn--meetingpoint">
-              <button onClick={props.handleUpdate}>
-                Update
-              </button>
-
-              <button onClick={props.handleDelete}>
+              <button
+                className="delete--btn"
+                onClick={props.handleDelete}
+              >
                 Delete
               </button>
             </div>

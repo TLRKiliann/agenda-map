@@ -3,7 +3,7 @@
   height: 80px;
   margin: auto;
   display: flex;
-  background: black;
+  background: #3b3c47;
   border-bottom: 1px solid grey;
 }
 
@@ -26,6 +26,10 @@
   /*border: 2px solid orange;*/
 }
 
+.img--tag {
+  margin-left: 10px;
+}
+
 .middlenav--div {
   width: 80%;
   display: flex;
@@ -45,23 +49,23 @@
 }
 
 .tag--link {
-  margin: 0px 30px;
+  margin: 0px 20px;
   padding: 5px 10px;
   text-decoration: none;
   font-family: 'Consolas';
   font-size: 1.4rem;
   font-weight: bold;
-  color: whitesmoke;
+  color: lightgrey;
 
   /*border: 2px solid red;*/
 }
 
 .tag--link:hover {
-  color: orange;
+  color: #1e90ff;
 }
 
 .navbar--login {
-  margin-right: 20px;
+  margin: 0px 30px;
   padding: 3px 10px;
   display: flex;
   

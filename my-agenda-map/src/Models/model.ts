@@ -8,6 +8,7 @@ export type DataType = {
   phone: string;
   email: string;
   notice: string;
+  editNum: boolean;
 };
 
 export type DataTypeProps = {

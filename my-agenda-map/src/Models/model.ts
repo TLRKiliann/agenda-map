@@ -9,6 +9,7 @@ export type DataType = {
   email: string;
   notice: string;
   editNum: boolean;
+  editSwitchFirstName: boolean;
 };
 
 export type DataTypeProps = {

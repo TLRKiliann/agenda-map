@@ -101,6 +101,8 @@
   color: blue;
 }
 
+/*Create meetingPoint*/
+
 .display--settingsmeeting {
   position: absolute;
   top: 20%;
@@ -144,6 +146,7 @@
 }
 
 /*BTN Save New Appointment*/
+
 .divbtn--createmeeting {
   margin-top: 20px;
   display: flex;
@@ -167,7 +170,6 @@
 }
 
 .create--div {
-  width: 60%;
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -184,15 +186,21 @@
 }
 
 /*SubMeeting*/
-.mainfirst--div {
-  width: 100%;
+
+.submeeting--div {
   margin: auto;
-  display: flex;
+  margin-bottom: 20px;
+}
+
+.mainfirst--div {
+  margin: auto;
+  display: flex; 
 }
 
 .first--data {
-  width: 700px;
-  margin: 10px auto;
+  width: 800px;
+  margin: 10px 0px;
+  margin-left: 25%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -201,40 +209,83 @@
   background: linear-gradient(170deg, #1e90ff, blue, navy);
   border-radius: 15px;
   box-shadow: 0px 0px 2px #3b3c47;
-  color: white;
+  color: white; 
+}
+
+.capsview--div {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
 }
 
 .capsbtn--div {
-  margin: 0px 0px;
+  width: 100%;
+  margin: auto;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: left; 
 }
 
 .caps--div {
-  margin: 10px 0px;
+  width: 100%;
+  margin: 10px auto;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .left--div {
-  margin: 0px 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: right;
 }
 
-.pinput--left {
-  width: 120px;
+/*Viewer*/
+
+.left--divview {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+}
+
+
+.pview--left {
+  width: 484px;
+  margin-right: 10px;
   display: flex;
   align-items: center;
+  justify-content: left;
   font-family: 'Consolas';
   font-weight: bold;
 }
 
-.pinput--left p {
+.pview--left p {
+  width: 100%;
   margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.p--left {
+  width: 120px;
   margin-right: 10px;
   display: flex;
+  justify-content: right;
+  font-family: 'Consolas';
+  font-weight: bold;
+}
+
+.p--left p {
+
+  display: flex;
+  align-items: center;
   justify-content: right;
 }
 
@@ -246,18 +297,39 @@
   background: lightgrey;
 }
 
-.pinput--hour input {
-  margin: 5px 0px;
-  padding: 0px 5px;
-  width: 40px;
-  font-size: 0.9rem;
+.right--div {
+  width: 450px;
+  display: flex;
+}
+
+.right--divhour {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.input--hour {
+  display: flex;
+  justify-content: left;
   background: lightgrey;
 }
 
-.pinput--right input {
-  margin: 5px 0px;
-  padding: 0px 5px;
-  width: 160px;
+.input--hour input {
+  width: 40px;
+  display: flex;
+  justify-content: left;
+  background: lightgrey;
+}
+
+.input--right {
+  display: flex;
+  justify-content: right;
+}
+
+.input--right input {
+  width: 100%;
+  margin: auto;
   font-size: 0.9rem;
   background: lightgrey;
 }
@@ -351,6 +423,7 @@
 }
 
 /*Textarea of second component*/
+
 .notice--div {
   margin: auto;
   display: flex;

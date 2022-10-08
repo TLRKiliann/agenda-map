@@ -8,15 +8,17 @@ import '../StylesPages/MeetingPoint.scss';
 export const MeetingPoint:React.FC = () => {
 
   const [datas, setDatas] = useState<Array<DataType | any>>([]);
-  const [secDatas, setSecDatas] = useState<Array<DataType | any>>([]);
 
   const [date, setDate] = useState<string>("");
   const [hour, setHour] = useState<string>("");
   const [location, setLocation] = useState<string>("");
-  const [firstname, setFirstname] = useState<string>("");
-  const [lastname, setLastname] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
 
+  const [firstname, setFirstname] = useState<string>("");
+  const [editFirstName, setEditFirstName] = useState<string>("");
+
+  const [lastname, setLastname] = useState<string>("");
+  
+  const [phone, setPhone] = useState<string>("");
   const [editPhone, setEditPhone] = useState<string>("");
 
   const [email, setEmail] = useState<string>("");
@@ -28,7 +30,6 @@ export const MeetingPoint:React.FC = () => {
       .getAll()
       .then(initialNote => {
         setDatas(initialNote);
-        setSecDatas(initialNote);
       })
   }, []);
 
@@ -37,7 +38,6 @@ export const MeetingPoint:React.FC = () => {
       .getAll()
       .then(initialNote => {
         setDatas(initialNote);
-        setSecDatas(initialNote);
       })
     alert("Refresh done !")
   };
@@ -108,7 +108,7 @@ export const MeetingPoint:React.FC = () => {
 
   const validateNumber = (id: number) => {
     const data = datas.find(data => data.id === id);
-    const newPhone = {...data, phone: editPhone}
+    const newPhone = {...data, phone: editPhone, editNum: !data.editNum}
 
     meetingServices
       .update(id, newPhone)
@@ -120,7 +120,46 @@ export const MeetingPoint:React.FC = () => {
         setDatas(datas.filter(data => data.id !== id)
       )})
     setEditPhone("");
+  };
 
+
+  //Change firstname
+  const handleChangeFirstName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEditFirstName(event.target.value);
+  };
+
+  //Update (PUT method)
+  const handleFirstNameSwitch = (id: number) => {
+    const data = datas.find(data => data.id === id)
+    const changeFirstName = {...data, editSwitchFirstName: !data.editSwitchFirstName}
+    setEditFirstName(data ? data.firstname : null);
+
+    meetingServices
+      .update(id, changeFirstName)
+      .then(returnFirstNameSwitch => {
+        setDatas(datas.map(data => data.id !== id ? data : returnFirstNameSwitch))
+      })
+      .catch((error) => {
+        console.log("error with update firstname", error)
+        setDatas(datas.filter(d => d.id !== id))
+      })
+  };
+
+  const validateFirstName = (id: number) => {
+    const data = datas.find(data => data.id === id);
+    const newFirstName = {...data, firstname: editFirstName,
+      editSwitchFirstName: !data.editSwitchFirstName}
+
+    meetingServices
+      .update(id, newFirstName)
+      .then(returnFirstName => {
+        setDatas(datas.map(data => data.id === id ? returnFirstName : data)
+      )})
+      .catch((error) => {
+        alert(`Phone Number: ${data.firstname} not found !`)
+        setDatas(datas.filter(data => data.id !== id)
+      )})
+    setEditFirstName("");
   };
 
   //DELETE
@@ -157,7 +196,8 @@ export const MeetingPoint:React.FC = () => {
 
         <div className="appointment--reorder">
           <button
-            onClick={handleReorder}>
+            onClick={handleReorder}
+          >
             Reorder
           </button>
         </div>
@@ -283,51 +323,47 @@ export const MeetingPoint:React.FC = () => {
 
       </div>
 
-      {datas.map((data) => (
-        <SubMeetingPoint 
-          key={data?.id}
-          date={data.date}
-          setDate={data.setDate}
-          hour={data.hour}
-          setHour={data.setHour}
-          location={data.location}
-          setLocation={data.setLocation}
-          firstname={data.firstname}
-          setFirstname={data.setFirstname}
-          lastname={data.lastname}
-          setLastname={data.Lastname}
-          phone={data.phone}
-          setPhone={data.setPhone}
+      <div className="submeeting--div">
 
-          editNum={data.editNum}
-          editPhone={editPhone}
+        {datas.map((data) => (
+          <SubMeetingPoint
+            key={data?.id}
+            date={data.date}
+            setDate={data.setDate}
+            hour={data.hour}
+            setHour={data.setHour}
+            location={data.location}
+            setLocation={data.setLocation}
 
-          email={data.email}
-          setEmail={data.setEmail}
-          notice={data.notice}
-          setNotice={data.setNotice}
+            firstname={data.firstname}
+            setFirstname={data.setFirstname}
+            editFirstName={editFirstName}
 
-          handleChangeNumber={(event) => handleChangeNumber(event)}
-          validateNumber={() => validateNumber(data.id)}
+            lastname={data.lastname}
+            setLastname={data.Lastname}
+            editSwitchFirstName={data.editSwitchFirstName}
 
-          handleUpdate={() => handleUpdate(data.id)}
-          handleDelete={() => handleDelete(data.id)}
-        />
-      ))}
+            phone={data.phone}
+            setPhone={data.setPhone}
+            editNum={data.editNum}
+            editPhone={editPhone}
 
-      {secDatas.map(secData => (
-        <div key={secData.id}>
-          <p>{secData.date}
-            {secData.hour}
-            {secData.location}
-            {secData.firstname}
-            {secData.lastname}
-            {secData.phone}
-            {secData.email}
-            {secData.notice}</p>
-        </div>
-      ))}
+            email={data.email}
+            setEmail={data.setEmail}
+            notice={data.notice}
+            setNotice={data.setNotice}
 
+            handleChangeFirstName={(event) => handleChangeFirstName(event)}
+            handleFirstNameSwitch={() => handleFirstNameSwitch(data.id)}
+            validateFirstName={() => validateFirstName(data.id)}
+
+            handleChangeNumber={(event) => handleChangeNumber(event)}
+            validateNumber={() => validateNumber(data.id)}
+            handleUpdate={() => handleUpdate(data.id)}
+            handleDelete={() => handleDelete(data.id)}
+          />
+        ))}
+      </div>
     </div>
   )
 }

@@ -8,11 +8,15 @@ import '../../StylesPages/MeetingPoint.scss';
 
 type SubMeetingPointProps = {
   key: number;
-  date: string;
   editNum: boolean;
+  editSwitchFirstName: boolean;
+
+  date: string;
   setDate: React.Dispatch<React.SetStateAction<string>>;
+  
   hour: string;
   setHour: React.Dispatch<React.SetStateAction<string>>;
+  
   location: string;
   setLocation: React.Dispatch<React.SetStateAction<string>>;
   
@@ -21,15 +25,21 @@ type SubMeetingPointProps = {
   
   lastname: string;
   setLastname: React.Dispatch<React.SetStateAction<string>>;
+  editFirstName: string;
+
   phone: string;
   setPhone: React.Dispatch<React.SetStateAction<string>>;
   editPhone: string;
 
   email: string;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
+  
   notice: string;
   setNotice: React.Dispatch<React.SetStateAction<string>>;
 
+  handleChangeFirstName: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFirstNameSwitch: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  validateFirstName: () => void;
 
   handleChangeNumber: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleUpdate: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -45,8 +55,6 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
     setShowMeetingPoint(!showMeetingPoint);
   };
 
-  const labelSwitch = props.editNum ? "Hide" : "Modify";
-
   const MAPPING = "https://wego.here.com/directions/mix//";
 
   const styles = {
@@ -60,9 +68,10 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
       <div className="first--data">
 
-        <div className="capsbtn--div">
-          <div className="left--div">
-            <div className="pinput--left">
+        <div className="capsview--div">
+
+          <div className="left--divview">
+            <div className="pview--left">
               <button onClick={handleShow}>
                 {showMeetingPoint 
                   ? <FaRegEyeSlash size={24} style={styles} /> 
@@ -76,11 +85,11 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                 onChange={(event) => props.setDate(event.target.value)} />
             </div>
           </div>
-          <div className="right--div">
-            <div className="pinput--left">
+          <div className="right--divhour">
+            <div className="pview--left">
               <p>Hour : </p>
             </div>
-            <div className="pinput--hour">
+            <div className="input--hour">
               <input
                 value={props.hour}
                 onChange={(event) => props.setHour(event.target.value)} />
@@ -117,67 +126,130 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
             </div>
 
             <div className="caps--div">
+
               <div className="left--div">
-                <div className="pinput--left">
+                <div className="p--left">
                   <p>Firstname : </p>
                 </div>
-                <div className="pinput--right">
+                <div className="input--right">
                   <input
                     value={props.firstname}
-                    onChange={(event) => props.setFirstname(event.target.value)} />
-
+                    onChange={(event) => props.setFirstname(event.target.value)}
+                  />
                 </div>
+
+                {props.editSwitchFirstName ? (
+
+                  <div className="changephone--div">
+                    <input
+                      value={props.editFirstName}
+                      onChange={props.handleChangeFirstName}
+                    />
+                    <button onClick={props.validateFirstName}>SaveIt</button>
+                  </div>
+                  ) : null
+                }
+
+                {!props.editSwitchFirstName ? (
+
+                  <div className="changephone--btndiv">
+                    <button
+                      onClick={props.handleFirstNameSwitch}>
+                      Modify
+                    </button>
+                  </div>
+
+                  ) : null
+                }
               </div>
+
+              {!props.editSwitchFirstName ? (
+
               <div className="right--div">
-                <div className="pinput--left">
+              
+                <div className="p--left">
                   <p>Lastname : </p>
                 </div>
-                <div className="pinput--right">
+                
+                <div className="input--right">
                   <input
                     value={props.lastname}
-                    onChange={(event) => props.setLastname(event.target.value)} />             
+                    onChange={(event) => props.setLastname(event.target.value)}
+                  />
                 </div>
+
+                  <div className="changephone--btndiv">
+                    <button
+                      onClick={props.handleFirstNameSwitch}>
+                      Modify
+                    </button>
+                  </div>
+
               </div>
+                ) : null
+              }
+
+
             </div>
 
             <div className="caps--div">
               
               <div className="left--div">
-                <div className="pinput--left">
+                <div className="p--left">
                   <p>Phone : </p>
                 </div>
-                <div className="pinput--right">
+                <div className="input--right">
                   <input
                     value={props.phone}
-                    onChange={(event) => props.setPhone(event.target.value)} />
+                    onChange={(event) => props.setPhone(event.target.value)}
+                  />
                 </div>
 
                 {props.editNum ? (
+
                   <div className="changephone--div">
-                    <input value={props.editPhone} onChange={props.handleChangeNumber}/>
-                    <button onClick={props.validateNumber}>Save</button>
+                    <input
+                      value={props.editPhone}
+                      onChange={props.handleChangeNumber}
+                    />
+                    <button onClick={props.validateNumber}>SaveIt</button>
                   </div>
-                  ) : null}
-                <div className="changephone--btndiv">
-                  <button
-                    onClick={props.handleUpdate}>
-                    {labelSwitch}
-                  </button>
-                </div>
+                  ) : null
+                }
+
+                {!props.editNum ? (
+
+                  <div className="changephone--btndiv">
+                    <button
+                      onClick={props.handleUpdate}>
+                      Modify
+                    </button>
+                  </div>
+                  ) : null
+                }
+
               </div>
 
               {!props.editNum ? (
+
                 <div className="right--div">
-                  <div className="pinput--left">
+                  <div className="p--left">
                     <p>Email : </p>
                   </div>
-                  <div className="pinput--right">
+                  <div className="input--right">
                     <input
                       value={props.email}
                       onChange={(event) => props.setEmail(event.target.value)} />
                   </div>
+                  <div className="changephone--btndiv">
+                    <button
+                      onClick={props.handleFirstNameSwitch}>
+                      Modify
+                    </button>
+                  </div>
                 </div>
-              ) : null}
+                ) : null
+              }
 
             </div>
 
@@ -202,8 +274,8 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
             </div>
 
           </div>
-
-        ) : null}
+          ) : null
+        }
 
       </div>
     </div>
@@ -211,3 +283,5 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 }
 
 export default SubMeetingPoint;
+
+//<button onClick={props.validateNumber}>Save</button>

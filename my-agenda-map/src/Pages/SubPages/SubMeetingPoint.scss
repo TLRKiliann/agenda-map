@@ -7,11 +7,11 @@
 
 .mainfirst--div {
   margin: auto;
-  display: flex; 
+  display: flex;
 }
 
 .first--data {
-  width: 800px;
+  width: 920px;
   margin: 10px 0px;
   margin-left: 25%;
   padding: 10px 20px;
@@ -22,25 +22,23 @@
   background: linear-gradient(170deg, #1e90ff, blue, navy);
   border-radius: 15px;
   box-shadow: 0px 0px 2px #3b3c47;
-  color: white; 
+  color: white;
 }
 
 .capsview--div {
-  width: 100%;
-  margin: auto;
+  padding-right: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: right;
 }
 
-.capsbtn--div {
+.left--divview {
   width: 100%;
-  margin: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: left; 
+  justify-content: right;
 }
 
 .caps--div {
@@ -49,27 +47,20 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  border: 2px solid orange;
 }
 
 .left--div {
+  width: 55%;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: right;
 }
 
 /*Viewer*/
 
-.left--divview {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: right;
-}
-
-
 .pview--left {
-  width: 484px;
+  width: 100%;
   margin-right: 10px;
   display: flex;
   align-items: center;
@@ -87,19 +78,21 @@
 }
 
 .p--left {
-  width: 120px;
-  margin-right: 10px;
+  min-width: 120px;
   display: flex;
   justify-content: right;
   font-family: 'Consolas';
   font-weight: bold;
+
+  border: 1px solid cyan;
 }
 
 .p--left p {
-
   display: flex;
   align-items: center;
   justify-content: right;
+
+  border: 1px solid cyan;
 }
 
 .pinput--date input {
@@ -113,6 +106,7 @@
 .right--div {
   width: 450px;
   display: flex;
+  padding: 0px 10px;
 }
 
 .right--divhour {
@@ -136,35 +130,40 @@
 }
 
 .input--right {
+  margin: auto 10px;
   display: flex;
   justify-content: right;
 }
 
 .input--right input {
-  width: 100%;
-  margin: auto;
   font-size: 0.9rem;
   background: lightgrey;
 }
 
+
+/*TRUC QUI BLOCK PADDING BTN!!!*/
+
 .changephone--div {
   margin: auto;
-  margin-left: 10px;
   display: flex;
-  flex-direction: row;
+
+  border: 2px solid white;
 }
 
 .changephone--div input {
-  width: 100px;
   font-size: 0.9rem;
 }
 
-.changephone--div button {
-  margin-left: 10px;
-  width: 60px;
-}
+/*TRUC QUI BLOCK PADDING BTN!!!*/
 
 .btn--modify {
+  margin: auto;
+  margin-left: 10px;
+  padding: 3px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   font-family: 'Consolas';
   font-size: 0.9rem;
   background: linear-gradient(170deg, royalblue, navy);
@@ -172,6 +171,8 @@
   border-radius: 3px;
   box-shadow: 0px 0px 3px white;
   color: white;
+
+  border: 2px solid yellow;
 }
 
 .btn--modify:hover {
@@ -190,20 +191,21 @@
 
 .changephone--btndiv button {
   width: 60px;
-  padding: 3px 0px;
+  margin: auto;
+  padding: 5px 0px;
 }
 
 /*Location-Map second component*/
 
 .caps--location {
-  margin: 10px 14px;
+  margin: 10px 0px;
   display: flex;
   align-items: center;
   justify-content: left;
 }
 
 .p--location {
-  margin-left: 18px;
+  margin-left: 36px;
 }
 
 .p--location p {
@@ -213,17 +215,21 @@
 }
 
 .input--location {
-  margin: auto;
+  margin: 0px 10px;
+  margin-right: 20px;
   width: 504px;
-  display: flex;
-  justify-content: left;
 }
 
 .input--location input {
+  width: 100%;
   padding: 0px 6px;
   width: 500px;
   font-size: 0.9rem;
   background: lightgrey;
+}
+
+.a--location {
+  margin-left: 10px; 
 }
 
 .hwg--a {
@@ -255,47 +261,51 @@
 /*Textarea of second component*/
 
 .notice--div {
-  margin: auto;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: left;
 }
 
 .ptextarea--left {
   margin-left: 40px;
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
 .ptextarea--left p {
   font-weight: bold;
 }
 
+.text--areacreate {
+  width: 558px;
+  height: 60px;
+  margin-left: 10px;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  background: lightgrey;
+}
+
 .text--area {
-  width: 548px;
-  margin: 0px 12px;
+  width: 770px;
+  height: 60px;
+  margin-left: 10px;
+  margin-top: 15px;
   font-size: 0.9rem;
   background: lightgrey;
 }
 
 /*BTN of second component*/
 .btn--meetingpoint {
-  width: 680px;
-  margin:auto;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: right;
 }
 
 .btn--meetingpoint button {
   width: 100px;
-  margin-top: 5px;
-  margin-left: 30px;
+  margin: 10px 0px;
   padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   font-family: 'Consolas';
   font-weight: bold;
   background: linear-gradient(170deg, royalblue, navy);
@@ -313,5 +323,5 @@
 }
 
 .delete--btn {
-  margin-right: 4px;
+  margin-right: 10px;
 }

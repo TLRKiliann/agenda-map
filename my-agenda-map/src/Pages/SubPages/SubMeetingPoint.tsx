@@ -146,8 +146,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                       onChange={props.handleChangeFirstName}
                     />
                     <button
-
-                        className="btn--modify"
+                      className="btn--modify"
                       onClick={props.validateFirstName}>
                       Save
                     </button>
@@ -159,8 +158,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
                   <div className="changephone--btndiv">
                     <button
-
-                        className="btn--modify"
+                      className="btn--modify"
                       onClick={props.handleFirstNameSwitch}>
                       Modify
                     </button>
@@ -187,8 +185,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
                   <div className="changephone--btndiv">
                     <button
-
-                        className="btn--modify"
+                      className="btn--modify"
                       onClick={props.handleFirstNameSwitch}>
                       Modify
                     </button>
@@ -197,7 +194,6 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
               </div>
                 ) : null
               }
-
 
             </div>
 

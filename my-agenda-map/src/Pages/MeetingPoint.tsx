@@ -298,7 +298,7 @@ export const MeetingPoint:React.FC = () => {
               </div>
               <div>
                 <textarea
-                  className="text--area"
+                  className="text--areacreate"
                   rows={5}
                   cols={66}
                   wrap="soft"

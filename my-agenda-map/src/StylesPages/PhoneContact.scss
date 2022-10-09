@@ -59,10 +59,12 @@ summary {
 .search {
   position: absolute;
   top: 0px;
-  right: 300px;
-  bottom: 210px;
-  left: 400px;
-  margin-top: 20%;
+
+  width: 500px;
+  height: 450px;
+  margin-top: 15%;
+  margin-right: 35%;
+  margin-left: 35%;
   display: flex;
   flex-direction: column;
   background: linear-gradient(170deg, royalblue, blue, navy);
@@ -88,6 +90,7 @@ summary {
 
 .sub--search {
   margin-top: 50px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
 }
@@ -133,7 +136,7 @@ summary {
 }
 
 .sub--searchnext p {
-  padding-top: 20px;
+  padding: 20px 5px;
   font-family: 'Consolas';
   font-size: 1.6rem;
   font-weight: bold;

@@ -36,8 +36,9 @@ summary {
 }
 
 .searchSwitch button {
-  margin-left: 60px;
-  padding: 5px 10px;
+  width: 180px;
+  margin-left: 40px;
+  padding: 8px 10px;
   font-family: 'Consolas';
   font-weight: bold;
   background: #3b3c47;
@@ -45,6 +46,13 @@ summary {
   border-radius: 3px;
   box-shadow: 0px 0px 1px #000;
   color: white;
+}
+
+.searchSwitch button:hover {
+  background: lightblue;
+  border: 1px solid lightblue;
+  border-radius: 3px;
+  color: blue;
 }
 
 .search {

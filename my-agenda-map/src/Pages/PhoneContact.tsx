@@ -23,8 +23,12 @@ export const PhoneContact:React.FC = () => {
     setSwitchContactSearch(!switchContactSearch);
   };
 
-  const handleResultPhone = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const searchName = event.target.value;
+  const writterName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchName(event.target.value);
+  }
+
+  const handleResultPhone = (event: React.MouseEvent<HTMLButtonElement>) => {
+    //const searchName = event.target.value;
     setSearchName(searchName);
     const retrievePhone = secDatas.map(secData => secData).filter(secData => {
       return secData.firstname === searchName
@@ -33,10 +37,10 @@ export const PhoneContact:React.FC = () => {
     event.preventDefault();
     //console.log(retrievePhone)
     if (searchName === "") {
-      setSecDatas(secDatas);
+      setFilterData([]);
     } else {
       setFilterData(retrievePhone);
-      //setSearchName("");
+      setSearchName("");
     }
   };
 
@@ -70,12 +74,12 @@ export const PhoneContact:React.FC = () => {
             <input
               type="text"
               value={searchName} 
-              onChange={handleResultPhone}
+              onChange={writterName}
               placeholder="Enter name of contact"
             />
           </div>
           <div className="sub--searchnext">
-            <button >
+            <button onClick={handleResultPhone}>
               Search
             </button>
           </div>

@@ -99,23 +99,23 @@ export const PhoneContact:React.FC = () => {
 
         <div key={secData.id} className="phoneCall--data">
           <div className="supradivphone--data">
-            <div className="divphone--data" style={{width:"160px"}}>  
-              <p>{secData.firstname}</p>
+            
+            <div className="inter--data">
+              <div className="divphone--data">
+                <p>Firstname: {secData.firstname}</p>
+                <p>Lastname: {secData.lastname}</p>
+              </div>
+
+              <div className="divphone--data">
+                <p>Phone: {secData.phone}</p>
+                <p>Email: {secData.email}</p>
+              </div>
+
+              <div className="locationphone--data">
+                <p>{secData.location}</p>
+              </div>
             </div>
-            <div className="divphone--data" style={{width:"160px"}}>
-              <p>{secData.lastname}</p>
-            </div>
-            <div className="divphone--data" style={{width:"180px"}}>
-              <p>{secData.phone}</p>
-            </div>
-            <div className="divphone--data" style={{width:"300px"}}>
-              <p>{secData.email}</p>
-            </div>
-          </div>
-          <div>
-            <div className="locationphone--data">
-              <p>{secData.location}</p>
-            </div>
+
           </div>
         </div>
       ))}

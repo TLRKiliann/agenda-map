@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { AiFillEye } from 'react-icons/ai';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { MdOutlineMyLocation } from 'react-icons/md';
-import '../../StylesPages/MeetingPoint.scss';
+import './SubMeetingPoint.scss';
 
 
 type SubMeetingPointProps = {
@@ -145,7 +145,12 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                       value={props.editFirstName}
                       onChange={props.handleChangeFirstName}
                     />
-                    <button onClick={props.validateFirstName}>SaveIt</button>
+                    <button
+
+                        className="btn--modify"
+                      onClick={props.validateFirstName}>
+                      Save
+                    </button>
                   </div>
                   ) : null
                 }
@@ -154,6 +159,8 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
                   <div className="changephone--btndiv">
                     <button
+
+                        className="btn--modify"
                       onClick={props.handleFirstNameSwitch}>
                       Modify
                     </button>
@@ -180,6 +187,8 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
                   <div className="changephone--btndiv">
                     <button
+
+                        className="btn--modify"
                       onClick={props.handleFirstNameSwitch}>
                       Modify
                     </button>
@@ -212,7 +221,11 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                       value={props.editPhone}
                       onChange={props.handleChangeNumber}
                     />
-                    <button onClick={props.validateNumber}>SaveIt</button>
+                    <button 
+                      className="btn--modify"
+                      onClick={props.validateNumber}>
+                      Save
+                    </button>
                   </div>
                   ) : null
                 }
@@ -221,6 +234,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
 
                   <div className="changephone--btndiv">
                     <button
+                      className="btn--modify"
                       onClick={props.handleUpdate}>
                       Modify
                     </button>
@@ -243,6 +257,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   </div>
                   <div className="changephone--btndiv">
                     <button
+                      className="btn--modify"
                       onClick={props.handleFirstNameSwitch}>
                       Modify
                     </button>

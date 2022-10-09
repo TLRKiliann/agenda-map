@@ -23,8 +23,12 @@ export const PhoneContact:React.FC = () => {
     setSwitchContactSearch(!switchContactSearch);
   };
 
-  const handleResultPhone = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const searchName = event.target.value;
+  const writterName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchName(event.target.value);
+  }
+
+  const handleResultPhone = (event: React.MouseEvent<HTMLButtonElement>) => {
+    //const searchName = event.target.value;
     setSearchName(searchName);
     const retrievePhone = secDatas.map(secData => secData).filter(secData => {
       return secData.firstname === searchName
@@ -33,10 +37,10 @@ export const PhoneContact:React.FC = () => {
     event.preventDefault();
     //console.log(retrievePhone)
     if (searchName === "") {
-      setSecDatas(secDatas);
+      setFilterData([]);
     } else {
       setFilterData(retrievePhone);
-      //setSearchName("");
+      setSearchName("");
     }
   };
 
@@ -70,12 +74,12 @@ export const PhoneContact:React.FC = () => {
             <input
               type="text"
               value={searchName} 
-              onChange={handleResultPhone}
+              onChange={writterName}
               placeholder="Enter name of contact"
             />
           </div>
           <div className="sub--searchnext">
-            <button >
+            <button onClick={handleResultPhone}>
               Search
             </button>
           </div>
@@ -95,23 +99,23 @@ export const PhoneContact:React.FC = () => {
 
         <div key={secData.id} className="phoneCall--data">
           <div className="supradivphone--data">
-            <div className="divphone--data" style={{width:"160px"}}>  
-              <p>{secData.firstname}</p>
+            
+            <div className="inter--data">
+              <div className="divphone--data">
+                <p>Firstname: {secData.firstname}</p>
+                <p>Lastname: {secData.lastname}</p>
+              </div>
+
+              <div className="divphone--data">
+                <p>Phone: {secData.phone}</p>
+                <p>Email: {secData.email}</p>
+              </div>
+
+              <div className="locationphone--data">
+                <p>{secData.location}</p>
+              </div>
             </div>
-            <div className="divphone--data" style={{width:"160px"}}>
-              <p>{secData.lastname}</p>
-            </div>
-            <div className="divphone--data" style={{width:"180px"}}>
-              <p>{secData.phone}</p>
-            </div>
-            <div className="divphone--data" style={{width:"300px"}}>
-              <p>{secData.email}</p>
-            </div>
-          </div>
-          <div>
-            <div className="locationphone--data">
-              <p>{secData.location}</p>
-            </div>
+
           </div>
         </div>
       ))}

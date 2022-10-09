@@ -1,5 +1,6 @@
 .phonecontact {
   /*border: 2px solid orange;*/
+  min-height: 100vh;
 }
 
 .phonecontact h1 {
@@ -59,7 +60,7 @@ summary {
   position: absolute;
   top: 0px;
   right: 300px;
-  bottom: 110px;
+  bottom: 210px;
   left: 400px;
   margin-top: 20%;
   display: flex;
@@ -85,7 +86,6 @@ summary {
   }
 }
 
-
 .sub--search {
   margin-top: 50px;
   display: flex;
@@ -107,13 +107,11 @@ summary {
   padding: 5px 3px;
   font-family: 'Consolas';
   font-size: 1.2rem;
-
   background: lightgrey;
 }
 
-
 .sub--searchnext button {
-  margin-top: 40px;
+  margin-top: 50px;
   padding: 5px 40px;
   font-size: 1.2rem;
   background: linear-gradient(170deg, royalblue, blue, royalblue);
@@ -136,7 +134,10 @@ summary {
 
 .sub--searchnext p {
   padding-top: 20px;
-  font-size: 1.2rem;
+  font-family: 'Consolas';
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: orange;
 }
 
 /*secdatas*/
@@ -144,35 +145,51 @@ summary {
 .phoneCall--data {
   width: 900px;
   margin: 20px auto;
-  margin-left: 20%;
+  margin-left: 22%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
 
-  background: linear-gradient(180deg, royalblue, blue, navy);
+  background: linear-gradient(170deg, royalblue, blue, navy);
   border-radius: 15px;
-  box-shadow: 0px 0px 1px black;
-  color: lightgreen;
+  box-shadow: 0px 0px 1px #3b3c47;
 }
 
 .supradivphone--data {
-  margin: auto;
+  margin: 5px 0px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+}
+
+.inter--data {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left;
+  color: lightgreen;
 }
 
 .divphone--data {
-  display: flex;
-  justify-content: center;
+  width: 240px;
+  margin: auto;
+}
+
+.divphone--datasec {
+  width: 220px;
 }
 
 .divphone--data p {
-  margin: 10px auto;
-  font-size: 1.1rem;
+  margin: 5px 20px;
+  font-size: 1.0rem;
 }
 
 .locationphone--data {
-  font-size: 1.1rem;
+  margin: 0px 20px;
+  display: flex;
+  flex-direction: left;
+  align-items: center;
+  text-align: justify;
+  font-size: 1.0rem;
 }
-

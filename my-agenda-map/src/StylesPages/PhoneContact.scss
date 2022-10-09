@@ -30,8 +30,6 @@ summary {
 }
 
 .searchSwitch {
-  position: absolute;
-  left: 0px;
   width: 250px;
   display: flex;
 }
@@ -143,44 +141,37 @@ summary {
   color: orange;
 }
 
+.div--separator {
+  margin: 30px 0px;
+}
+
 /*secdatas*/
 
 .phoneCall--data {
-  width: 900px;
-  margin: 20px auto;
-  margin-left: 22%;
+  margin: 0px 40px;
   display: flex;
   flex-direction: column;
-  align-items: left;
-
-  background: linear-gradient(170deg, royalblue, blue, navy);
-  border-radius: 15px;
-  box-shadow: 0px 0px 1px #3b3c47;
-}
-
-.supradivphone--data {
-  margin: 5px 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
+  align-items: center;
+  border-bottom: 1px solid lightgreen;
 }
 
 .inter--data {
+  width: 100%;
+
   display: flex;
   flex-direction: row;
-  align-items: left;
+  align-items: center;
   justify-content: left;
   color: lightgreen;
 }
 
 .divphone--data {
-  width: 240px;
-  margin: auto;
-}
-
-.divphone--datasec {
-  width: 220px;
+  width: 320px;
+  margin: 10px 0px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
 }
 
 .divphone--data p {
@@ -188,8 +179,22 @@ summary {
   font-size: 1.0rem;
 }
 
+.divphone--datasec {
+  width: 320px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.divphone--datasec p {
+  margin: 5px 20px;
+  font-size: 1.0rem;
+}
+
 .locationphone--data {
-  margin: 0px 20px;
+  width: 500px;
+  margin: 0px 10px;
   display: flex;
   flex-direction: left;
   align-items: center;

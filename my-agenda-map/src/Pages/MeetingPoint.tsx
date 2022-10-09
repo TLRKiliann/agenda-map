@@ -210,6 +210,7 @@ export const MeetingPoint:React.FC = () => {
         </div>
 
         {createNewMeeting ? (
+
           <form
             className="display--settingsmeeting"
             onSubmit={(event) => handleSaveAppointment(event)} >
@@ -217,6 +218,18 @@ export const MeetingPoint:React.FC = () => {
             <div className="title--newappointment">
               <h2>Create New Appointment</h2>
             </div>
+
+
+
+            <div className="div--xclose">
+              <p 
+                className="x--close" 
+                onClick={(event) => handleSaveAppointment(event)}>
+                X
+              </p>
+            </div>
+
+
 
             <div className="divMP--content">
               <label>

@@ -102,7 +102,22 @@
   color: blue;
 }
 
+
 /*Create meetingPoint*/
+
+.div--xclose {
+  display: flex;
+  justify-content: right;
+}
+
+.div--xclose p {
+  margin: auto 0px;
+  padding: 4px 8px;
+  background: navy;
+  border-radius: 50%;
+  color: lightgreen;
+}
+
 
 .display--settingsmeeting {
   position: absolute;

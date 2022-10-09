@@ -24,7 +24,7 @@
       "email": "nathan@mail.com",
       "notice": "Revoir la démarche.",
       "editNum": false,
-      "editSwitchFirstName": true
+      "editSwitchFirstName": false
     },
     {
       "id": 3,

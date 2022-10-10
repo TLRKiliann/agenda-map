@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import meetingServices from '../Services/meetingServices';
 import phoneServices from '../Services/phoneServices';
 import { DataType } from '../Models/model';
-import SubMeetingPoint from './SubPages/SubMeetingPoint';
+import SubMeetingPoint from '../Components/SubMeetingPoint';
 import '../StylesPages/MeetingPoint.scss';
 
 

@@ -4,7 +4,7 @@ import ButtonMeeting from './ButtonMeeting/ButtonMeeting';
 import { AiFillEye } from 'react-icons/ai';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { MdOutlineMyLocation } from 'react-icons/md';
-import './SubMeetingPoint.scss';
+import '../StylesComponents/SubMeetingPoint.scss';
 
 
 type SubMeetingPointProps = {

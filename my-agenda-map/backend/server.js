@@ -78,7 +78,8 @@ app.post('/api/create', (request, response) => {
       }
     })
 });
-//For PhoneContact
+
+//phonecontact Table
 app.post('/api/createPhone', (request, response) => {
   const id = request.body.id;
   const firstname = request.body.firstname;
@@ -89,8 +90,8 @@ app.post('/api/createPhone', (request, response) => {
   const email = request.body.email;
   const location = request.body.location;
 
-
-  db.query('INSERT INTO phonecontact (id, firstname, lastname, phone, email, location) VALUES (?,?,?,?,?,?)',
+  db.query('INSERT INTO phonecontact (id, firstname, lastname,\
+    phone, email, location) VALUES (?,?,?,?,?,?)',
     [id, firstname, lastname, phone, email, location], (err, result) => {
       if (err) {
         console.log(err, result)
@@ -102,6 +103,7 @@ app.post('/api/createPhone', (request, response) => {
 });
 
 app.put('/api/update/:id', (request, response) => {
+  console.log(request.body)
   const id = request.body.id;
   const date = request.body.date;
   const hour = request.body.hour;
@@ -133,6 +135,18 @@ app.delete('/api/delete/:id', (request, response) => {
   const id = request.params.id;
 
   db.query('DELETE FROM meetingpoint WHERE id=?', id, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      response.send(result);
+    }
+  })
+});
+
+app.delete('/api/deletePhone/:id', (request, response) => {
+  const id = request.params.id;
+
+  db.query('DELETE FROM phonecontact WHERE id=?', id, (err, result) => {
     if (err) {
       console.log(err);
     } else {

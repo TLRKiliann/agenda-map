@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import meetingServices from '../Services/meetingServices';
 import phoneServices from '../Services/phoneServices';
 import { DataType } from '../Models/model';
-import SubMeetingPoint from './SubPages/SubMeetingPoint';
+import SubMeetingPoint from '../Components/SubMeetingPoint';
 import '../StylesPages/MeetingPoint.scss';
 
 
@@ -88,20 +88,17 @@ export const MeetingPoint:React.FC = () => {
   }
 
   const handleRegister = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
     const newDataObject = {
       id: generateId(),
-      location: location,
       firstname: firstname,
       lastname: lastname,
       phone: phone,
       email: email,
-      editNum: false,
-      editSwitchFirstName: false
+      location: location
     }
 
     phoneServices
-      .create(newDataObject)
+      .createPhone(newDataObject)
       .then(returnData => {
         setDatas(datas.concat(newDataObject))
       })

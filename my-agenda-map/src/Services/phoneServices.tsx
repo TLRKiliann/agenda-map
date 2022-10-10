@@ -8,6 +8,7 @@ type DataTypeContactProps = {
 const getUrlPhone = 'http://localhost:4002/api/getAllPhone/';
 //const postUrl = 'http://localhost:3001/getAllPhone';
 const postUrl = 'http://localhost:4002/api/createPhone/';
+const deleteUrl = 'http://localhost:4002/api/deletePhone';
 
 const getAllContact = () => {
   const request = axios.get<DataTypeContactProps>(getUrlPhone)
@@ -15,12 +16,19 @@ const getAllContact = () => {
 };
 
 const createPhone = (newObject: any) => {
-  const request = axios.post<DataTypeContactProps>(postUrl, newObject)
+  const request = axios.post(postUrl, newObject)
+  return request.then((response: any) => response.data)
+};
+
+const removePhone = (id: number) => {
+  const request = axios.delete<DataTypeContactProps>(`${deleteUrl}/${id}`)
   return request.then((response: any) => response.data)
 };
 
 const functionPhone = {
-	getAllContact, createPhone
+	getAllContact,
+  createPhone,
+  removePhone
 };
 
 export default functionPhone;

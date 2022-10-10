@@ -42,6 +42,16 @@ app.get('/api/getAllMembers', (request, response) => {
   }) 
 });
 
+app.get('/api/getAllPhone', (request, response) => {
+  db.query('SELECT * from phonecontact', (err, result) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(result)
+    }
+  }) 
+});
+
 app.post('/api/create', (request, response) => {
   const id = request.body.id;
   const date = request.body.date;

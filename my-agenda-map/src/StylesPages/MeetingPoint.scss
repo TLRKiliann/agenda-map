@@ -102,9 +102,9 @@
   color: blue;
 }
 
-/*Create meetingPoint*/
 
-.display--settingsmeeting {
+/*Create meetingPoint*/
+.frameofsearch {
   position: absolute;
   top: 22%;
   left: 33%;
@@ -115,8 +115,30 @@
   font-family: 'Consolas';
   background: linear-gradient(170deg, royalblue, blue, navy);
   border-radius: 15px;
-  box-shadow: 0px 0px 5px white;
+  box-shadow: 0px 0px 5px white; 
 }
+
+.div--xclose {
+  display: flex;
+  justify-content: right;
+  cursor: pointer;
+}
+
+.div--xclose p {
+  margin: auto 0px;
+  padding: 4px 8px;
+  font-family: 'Times';
+  background: lightgrey;
+  border-radius: 50%;
+  color: blue;
+}
+
+.div--xclose p:hover {
+  background: blue;
+  border-radius: 50%;
+  color: lightgrey;
+}
+
 
 .title--newappointment {
   display: flex;
@@ -185,8 +207,10 @@
   margin: 0px 10px;
 }
 
-
-
+.submeeting--div {
+  margin: auto;
+  min-height: 80vh;
+}
 
 
 

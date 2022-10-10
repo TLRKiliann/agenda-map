@@ -20,17 +20,17 @@ const getAll = () => {
 };
 
 const create = (newObject: any) => {
-  const request = axios.post(postUrl, newObject)
+  const request = axios.post<DataTypeProps>(postUrl, newObject)
   return request.then((response: any) => response.data)
 };
 
 const update = (id: number, newObject: any) => {
-  const request = axios.put(`${putUrl}/${id}`, newObject)
+  const request = axios.put<DataTypeProps>(`${putUrl}/${id}`, newObject)
   return request.then((response: any) => response.data)
 };
 
 const remove = (id: number) => {
-  const request = axios.delete(`${deleteUrl}/${id}`)
+  const request = axios.delete<DataTypeProps>(`${deleteUrl}/${id}`)
   return request.then((response: any) => response.data)
 };
 

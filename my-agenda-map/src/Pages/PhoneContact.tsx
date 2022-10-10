@@ -65,6 +65,15 @@ export const PhoneContact:React.FC = () => {
       {switchContactSearch ? (
 
         <div className="search">
+
+          <div className="div--xclosephone">
+            <p 
+              className="x--close" 
+              onClick={switchSearch}>
+              X
+            </p>
+          </div>
+
           <div className="sub--search">
             <h2>
               Search Contact
@@ -95,30 +104,35 @@ export const PhoneContact:React.FC = () => {
         </div>
       ) : null}
 
+
+      <div className="div--separator">
+      </div>
+
       {secDatas.map(secData => (
 
         <div key={secData.id} className="phoneCall--data">
-          <div className="supradivphone--data">
             
-            <div className="inter--data">
-              <div className="divphone--data">
-                <p>Firstname: {secData.firstname}</p>
-                <p>Lastname: {secData.lastname}</p>
-              </div>
-
-              <div className="divphone--data">
-                <p>Phone: {secData.phone}</p>
-                <p>Email: {secData.email}</p>
-              </div>
-
-              <div className="locationphone--data">
-                <p>{secData.location}</p>
-              </div>
+          <div className="inter--data">
+            <div className="divphone--data">
+              <p>Firstname: {secData.firstname}</p>
+              <p>Lastname: {secData.lastname}</p>
             </div>
 
+            <div className="divphone--datasec">
+              <p>Phone: {secData.phone}</p>
+              <p>Email: {secData.email}</p>
+            </div>
+
+            <div className="locationphone--data">
+              <p>{secData.location}</p>
+            </div>
           </div>
+
         </div>
       ))}
+
+      <div className="div--separator">
+      </div>
 
     </div>
   )

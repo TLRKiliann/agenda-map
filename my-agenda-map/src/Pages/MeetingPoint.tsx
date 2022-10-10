@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import meetingServices from '../Services/meetingServices';
+import phoneServices from '../Services/phoneServices';
 import { DataType } from '../Models/model';
 import SubMeetingPoint from './SubPages/SubMeetingPoint';
 import '../StylesPages/MeetingPoint.scss';
@@ -56,6 +57,7 @@ export const MeetingPoint:React.FC = () => {
     return maxId + 1;
   };
 
+  //Method POST
   const handleSaveAppointment = (event: React.FormEvent) => {
     event.preventDefault();
     const dataObject = {
@@ -68,7 +70,8 @@ export const MeetingPoint:React.FC = () => {
       phone: phone,
       email: email,
       notice: notice,
-      editNum: false
+      editNum: false,
+      editSwitchFirstName: false
     }
 
     meetingServices
@@ -83,6 +86,32 @@ export const MeetingPoint:React.FC = () => {
     alert(`Data saved OK !`);
     setCreatNewMeeting(false);
   }
+
+  const handleRegister = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    const newDataObject = {
+      id: generateId(),
+      location: location,
+      firstname: firstname,
+      lastname: lastname,
+      phone: phone,
+      email: email,
+      editNum: false,
+      editSwitchFirstName: false
+    }
+
+    phoneServices
+      .create(newDataObject)
+      .then(returnData => {
+        setDatas(datas.concat(newDataObject))
+      })
+      .catch((error) => {
+        console.log("error with create new register !")
+        setDatas([])
+      })
+    alert(`Data saved OK !`);
+  }
+
 
    //To change note.number
   const handleChangeNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -210,115 +239,125 @@ export const MeetingPoint:React.FC = () => {
         </div>
 
         {createNewMeeting ? (
-          <form
-            className="display--settingsmeeting"
-            onSubmit={(event) => handleSaveAppointment(event)} >
+          <div className="frameofsearch">
 
-            <div className="title--newappointment">
-              <h2>Create New Appointment</h2>
-            </div>
-
-            <div className="divMP--content">
-              <label>
-                Date :
-              </label>
-              <input
-                type="text"
-                onChange={(e) => setDate(e.target.value)}
-                autoFocus
-                placeholder="00/00/0000" />
+            <div className="div--xclose">
+              <p 
+                className="x--close" 
+                onClick={handleCreate}>
+                X
+              </p>
             </div>
 
-            <div className="divMP--content">
-              <label>
-                Hour :
-              </label>
-              <input
-                type="text"
-                onChange={(e) => setHour(e.target.value)}
-                placeholder="00:00" />
-            </div>
-            
-            <div className="divMP--content">
-              <label>
-                Location :
-              </label>
-              <input
-                style={{width: '240px'}}
-                type="text"
-                onChange={(e) => setLocation(e.target.value)}
-                placeholder="Chemin du Devin, 1012 Lausanne" />
-            </div>
-            
-            <div className="divMP--content">
-              <label>
-                Firstname :
-              </label>
-              <input
-                type="text"
-                onChange={(e) => setFirstname(e.target.value)}
-                placeholder="firstname" />
-            </div>
+            <form
+              className="display--settingsmeeting"
+              onSubmit={(event) => handleSaveAppointment(event)} >
 
-            <div className="divMP--content">
-              <label>
-                Lastname :
-              </label>
-              <input
-                type="text"
-                onChange={(e) => setLastname(e.target.value)}
-                placeholder="lastname" />
-            </div>
+              <div className="title--newappointment">
+                <h2>Create New Appointment</h2>
+              </div>
 
-            <div className="divMP--content">
-              <label>
-                Phone Number :
-              </label>
-              <input
-                type="text"
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="333 333 22 22" />
-            </div>
-
-            <div className="divMP--content">
-              <label>
-                Email :
-              </label>
-              <input
-                type="email"
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="super.man@mail.uk" />
-            </div>
-
-            <div className="div--textarealabel">
-              <div className="noticelabel--div">
+              <div className="divMP--content">
                 <label>
-                  Note(s) :
+                  Date :
                 </label>
+                <input
+                  type="text"
+                  onChange={(e) => setDate(e.target.value)}
+                  autoFocus
+                  placeholder="00/00/0000" />
               </div>
-              <div>
-                <textarea
-                  className="text--area"
-                  rows={5}
-                  cols={66}
-                  wrap="soft"
-                  onChange={(e) => setNotice(e.target.value)}
-                  placeholder="Write something here...">
-                </textarea>
+
+              <div className="divMP--content">
+                <label>
+                  Hour :
+                </label>
+                <input
+                  type="text"
+                  onChange={(e) => setHour(e.target.value)}
+                  placeholder="00:00" />
               </div>
-            </div>
+              
+              <div className="divMP--content">
+                <label>
+                  Location :
+                </label>
+                <input
+                  style={{width: '240px'}}
+                  type="text"
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="Chemin du Devin, 1012 Lausanne" />
+              </div>
+              
+              <div className="divMP--content">
+                <label>
+                  Firstname :
+                </label>
+                <input
+                  type="text"
+                  onChange={(e) => setFirstname(e.target.value)}
+                  placeholder="firstname" />
+              </div>
 
-            <div className="divbtn--createmeeting">
-              <button
-                type="submit"
-                className="btn--createmeeting"
-              >
-                Save New Appointment
-              </button>
-            </div>
+              <div className="divMP--content">
+                <label>
+                  Lastname :
+                </label>
+                <input
+                  type="text"
+                  onChange={(e) => setLastname(e.target.value)}
+                  placeholder="lastname" />
+              </div>
 
-          </form>
+              <div className="divMP--content">
+                <label>
+                  Phone Number :
+                </label>
+                <input
+                  type="text"
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="333 333 22 22" />
+              </div>
 
+              <div className="divMP--content">
+                <label>
+                  Email :
+                </label>
+                <input
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="super.man@mail.uk" />
+              </div>
+
+              <div className="div--textarealabel">
+                <div className="noticelabel--div">
+                  <label>
+                    Note(s) :
+                  </label>
+                </div>
+                <div>
+                  <textarea
+                    className="text--areacreate"
+                    rows={5}
+                    cols={66}
+                    wrap="soft"
+                    onChange={(e) => setNotice(e.target.value)}
+                    placeholder="Write something here...">
+                  </textarea>
+                </div>
+              </div>
+
+              <div className="divbtn--createmeeting">
+                <button
+                  type="submit"
+                  className="btn--createmeeting"
+                >
+                  Save New Appointment
+                </button>
+              </div>
+
+            </form>
+          </div>
         ) : null}
 
       </div>
@@ -361,6 +400,7 @@ export const MeetingPoint:React.FC = () => {
             validateNumber={() => validateNumber(data.id)}
             handleUpdate={() => handleUpdate(data.id)}
             handleDelete={() => handleDelete(data.id)}
+            handleRegister={() => handleRegister(data.id)}
           />
         ))}
       </div>

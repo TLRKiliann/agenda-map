@@ -25,7 +25,7 @@ export const PhoneContact:React.FC = () => {
 
   const writterName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchName(event.target.value);
-  }
+  };
 
   const handleResultPhone = (event: React.MouseEvent<HTMLButtonElement>) => {
     //const searchName = event.target.value;
@@ -41,6 +41,24 @@ export const PhoneContact:React.FC = () => {
     } else {
       setFilterData(retrievePhone);
       setSearchName("");
+    }
+  };
+
+  const handlePhoneDelete = (id: number) => {
+    const secData = secDatas.find(secData => secData?.id === id);
+    if (window.confirm(`Delete ${secData?.firstname} ${secData?.lastname} ?`)) {
+      phoneServices
+        .removePhone(id)
+        .then(returnsecData => {
+          setSecDatas(secDatas?.filter(secData => secData?.id !== id))
+        })
+        .catch((error) => {
+          alert(`The note '${secData?.firstname} ${secData?.lastname}'\
+            was already deleted from server`)
+          setSecDatas(secDatas.filter(secData => secData?.id !== id))
+        });
+    } else {
+      return null;
     }
   };
 
@@ -125,6 +143,12 @@ export const PhoneContact:React.FC = () => {
 
             <div className="locationphone--data">
               <p>{secData.location}</p>
+            </div>
+
+            <div>
+              <button onClick={() => handlePhoneDelete(secData.id)}>
+                Delete
+              </button>
             </div>
           </div>
 

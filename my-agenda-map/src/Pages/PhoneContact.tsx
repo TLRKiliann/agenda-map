@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { DataType } from '../Models/model';
-import meetingServices from '../Services/meetingServices';
-//import phoneServices from '../Services/phoneServices';
+import { DataTypeContact } from '../Models/contactModel';
+//import meetingServices from '../Services/meetingServices';
+import phoneServices from '../Services/phoneServices';
 import '../StylesPages/PhoneContact.scss';
 
 export const PhoneContact:React.FC = () => {
 
-  const [secDatas, setSecDatas] = useState<Array<DataType | any>>([]);
+  const [secDatas, setSecDatas] = useState<Array<DataTypeContact | any>>([]);
   const [searchName, setSearchName] = useState<string>("");
-  const [filterData, setFilterData] = useState<Array<DataType | any>>([]);
+  const [filterData, setFilterData] = useState<Array<DataTypeContact | any>>([]);
   const [switchContactSearch, setSwitchContactSearch] = useState<boolean>(false);
 
   useEffect(() => {
-    meetingServices
-      .getAll()
-      .then(initialNote => {
-        setSecDatas(initialNote);
+    phoneServices
+      .getAllContact()
+      .then((initialContact:any) => {
+        setSecDatas(initialContact);
       })
   }, []);
 

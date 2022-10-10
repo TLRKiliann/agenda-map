@@ -88,20 +88,18 @@ export const MeetingPoint:React.FC = () => {
   }
 
   const handleRegister = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+    //event.preventDefault();
     const newDataObject = {
       id: generateId(),
-      location: location,
       firstname: firstname,
       lastname: lastname,
       phone: phone,
       email: email,
-      editNum: false,
-      editSwitchFirstName: false
+      location: location
     }
 
     phoneServices
-      .create(newDataObject)
+      .createPhone(newDataObject)
       .then(returnData => {
         setDatas(datas.concat(newDataObject))
       })

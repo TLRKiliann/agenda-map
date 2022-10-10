@@ -1,10 +1,5 @@
 /*SubMeeting*/
 
-.submeeting--div {
-  margin: auto;
-  min-height: 80vh;
-}
-
 .mainfirst--div {
   margin: auto;
   display: flex;
@@ -295,15 +290,15 @@
 }
 
 /*BTN of second component*/
-.btn--meetingpoint {
+.btn--meetingdelete {
   width: 100%;
   display: flex;
   justify-content: right;
 }
 
-.btn--meetingpoint button {
+.btn--meetingdelete button {
   width: 100px;
-  margin: 10px 0px;
+  margin: 10px 10px;
   padding: 5px 10px;
 
   font-family: 'Consolas';
@@ -315,7 +310,7 @@
   color: white;
 }
 
-.btn--meetingpoint button:hover {
+.btn--meetingdelete button:hover {
   background: lightblue;
   border-radius: 5px;
   box-shadow: 0px 0px 0px white;
@@ -325,3 +320,4 @@
 .delete--btn {
   margin-right: 10px;
 }
+

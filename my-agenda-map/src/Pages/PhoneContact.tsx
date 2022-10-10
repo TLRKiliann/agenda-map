@@ -65,6 +65,15 @@ export const PhoneContact:React.FC = () => {
       {switchContactSearch ? (
 
         <div className="search">
+
+          <div className="div--xclosephone">
+            <p 
+              className="x--close" 
+              onClick={switchSearch}>
+              X
+            </p>
+          </div>
+
           <div className="sub--search">
             <h2>
               Search Contact
@@ -121,6 +130,9 @@ export const PhoneContact:React.FC = () => {
 
         </div>
       ))}
+
+      <div className="div--separator">
+      </div>
 
     </div>
   )

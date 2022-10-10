@@ -54,12 +54,33 @@ summary {
   color: blue;
 }
 
+.div--xclosephone {
+  display: flex;
+  justify-content: right;
+  cursor: pointer;
+}
+
+.div--xclosephone p {
+  margin-right: 15px;
+  padding: 4px 8px;
+  font-family: 'Times';
+  background: lightgrey;
+  border-radius: 50%;
+  color: blue;
+}
+
+.div--xclosephone p:hover {
+  background: blue;
+  border-radius: 50%;
+  color: lightgrey;
+}
+
 .search {
   position: absolute;
   top: 0px;
 
   width: 500px;
-  height: 450px;
+  height: 400px;
   margin-top: 15%;
   margin-right: 35%;
   margin-left: 35%;
@@ -87,8 +108,7 @@ summary {
 }
 
 .sub--search {
-  margin-top: 50px;
-  margin-bottom: 50px;
+
   display: flex;
   justify-content: center;
 }

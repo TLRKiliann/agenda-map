@@ -46,43 +46,8 @@ I use json-server in mode development with axios services (front).
 
 ---
 
-# MySQL
+# MySQL Database => Tables
 
 ```
-MariaDB [mytable]> SHOW COLUMNS FROM mytable;
-+----------+--------------+------+-----+---------+-------+
-| Field    | Type         | Null | Key | Default | Extra |
-+----------+--------------+------+-----+---------+-------+
-| order_id | int(11)      | NO   | PRI | NULL    |       |
-| username | varchar(255) | YES  |     | NULL    |       |
-| password | varchar(255) | YES  |     | NULL    |       |
-+----------+--------------+------+-----+---------+-------+
-3 rows in set (0.005 sec)
-
-MariaDB [mytable]> SHOW COLUMNS FROM meetingpoint;
-+-----------+--------------+------+-----+---------+-------+
-| Field     | Type         | Null | Key | Default | Extra |
-+-----------+--------------+------+-----+---------+-------+
-| id        | int(11)      | NO   | PRI | NULL    |       |
-| date      | varchar(255) | YES  |     | NULL    |       |
-| hour      | varchar(255) | YES  |     | NULL    |       |
-| location  | varchar(255) | YES  |     | NULL    |       |
-| firstname | varchar(255) | YES  |     | NULL    |       |
-| lastname  | varchar(255) | YES  |     | NULL    |       |
-| phone     | varchar(255) | YES  |     | NULL    |       |
-| email     | varchar(255) | YES  |     | NULL    |       |
-| notice    | varchar(255) | YES  |     | NULL    |       |
-+-----------+--------------+------+-----+---------+-------+
-9 rows in set (0.005 sec)
-
-MariaDB [mytable]> SHOW COLUMNS FROM phonecontact;
-+---------+--------------+------+-----+---------+-------+
-| Field   | Type         | Null | Key | Default | Extra |
-+---------+--------------+------+-----+---------+-------+
-| id      | int(11)      | NO   | PRI | NULL    |       |
-| name    | varchar(255) | YES  |     | NULL    |       |
-| phone   | varchar(255) | YES  |     | NULL    |       |
-| editNum | int(11)      | YES  |     | NULL    |       |
-+---------+--------------+------+-----+---------+-------+
-4 rows in set (0.005 sec)
+Tables
 ```

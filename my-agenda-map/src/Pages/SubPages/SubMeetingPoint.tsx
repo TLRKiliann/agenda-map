@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 //import { DataType } from '../../Models/model';
+import ButtonMeeting from './ButtonMeeting/ButtonMeeting';
 import { AiFillEye } from 'react-icons/ai';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { MdOutlineMyLocation } from 'react-icons/md';
@@ -45,6 +46,7 @@ type SubMeetingPointProps = {
   handleUpdate: (event: React.MouseEvent<HTMLButtonElement>) => void;
   validateNumber: () => void;
   handleDelete: () => void;
+  handleRegister: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const SubMeetingPoint = (props: SubMeetingPointProps) => {
@@ -275,14 +277,10 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
               </div>
             </div>
 
-            <div className="btn--meetingpoint">
-              <button
-                className="delete--btn"
-                onClick={props.handleDelete}
-              >
-                Delete
-              </button>
-            </div>
+            <ButtonMeeting
+              handleDelete={props.handleDelete}
+              handleRegister={props.handleRegister}
+            />
 
           </div>
           ) : null

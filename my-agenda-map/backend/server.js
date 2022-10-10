@@ -22,7 +22,7 @@ const db = mysql.createConnection({
   database: process.env.DB_DATABASE
 });
 
-db.connect( (err) => {
+db.connect((err) => {
     if (err){
       console.log(err)
     }
@@ -37,7 +37,7 @@ app.get('/api/getAllMembers', (request, response) => {
     if (err) {
       console.log(err)
     } else {
-      res.send(result)
+      response.send(result)
     }
   }) 
 });
@@ -47,7 +47,7 @@ app.get('/api/getAllPhone', (request, response) => {
     if (err) {
       console.log(err)
     } else {
-      res.send(result)
+      response.send(result)
     }
   }) 
 });
@@ -57,17 +57,41 @@ app.post('/api/create', (request, response) => {
   const date = request.body.date;
   const hour = request.body.hour;
   const location = request.body.location;
-  const firstName = request.body.firstName;
-  const lastName = request.body.lastName;
+  const firstname = request.body.firstname;
+  const lastname = request.body.lastname;
   const phone = request.body.phone;
   const email = request.body.email;
   const notice = request.body.notice;
+  const editNum = request.body.editNum;
+  const editSwitchFirstName = request.body.editSwitchFirstName;
 
-  db.query('INSERT INTO meetingpoint (id, date,\
-    hour, location, firstName, lastName, phone,\
-    email, notice) VALUES (?,?,?,?,?,?)',
-    [id, date, hour, location, firstName, lastName,
-    phone, email, notice], (err, result) => {
+  db.query('INSERT INTO meetingpoint (id, date, hour, location,\
+    firstname, lastname, phone,\
+    email, notice, editNum, editSwitchFirstName) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
+    [id, date, hour, location, firstname, lastname,
+    phone, email, notice, editNum, editSwitchFirstName], (err, result) => {
+      if (err) {
+        console.log(err, result)
+      }
+      else {
+        response.send("Values inserted !")
+      }
+    })
+});
+//For PhoneContact
+app.post('/api/createPhone', (request, response) => {
+  const id = request.body.id;
+  const firstname = request.body.firstname;
+  console.log(firstname)
+  const lastname = request.body.lastname;
+  console.log(lastname)
+  const phone = request.body.phone;
+  const email = request.body.email;
+  const location = request.body.location;
+
+
+  db.query('INSERT INTO phonecontact (id, firstname, lastname, phone, email, location) VALUES (?,?,?,?,?,?)',
+    [id, firstname, lastname, phone, email, location], (err, result) => {
       if (err) {
         console.log(err, result)
       }
@@ -82,20 +106,24 @@ app.put('/api/update/:id', (request, response) => {
   const date = request.body.date;
   const hour = request.body.hour;
   const location = request.body.location;
-  const firstName = request.body.firstName;
-  const lastName = request.body.lastName;
+  const firstname = request.body.firstname;
+  const lastname = request.body.lastname;
   const phone = request.body.phone;
   const email = request.body.email;
   const notice = request.body.notice;
+  const editNum = request.body.editNum;
+  const editSwitchFirstName = request.body.editSwitchFirstName;
 
   db.query('UPDATE meetingpoint SET date=?, hour=?, location=?,\
-    firstName=?, lastName=?, phone=?, email=?, notice=?, WHERE id=?',
-    [date, hour, location, firstName, lastName, phone, email, notice, id],
+    firstname=?, lastname=?, phone=?, email=?, notice=?,\
+    editNum=?, editSwitchFirstName=?, WHERE id=?',
+    [date, hour, location, firstname, lastname, phone, email,
+    notice, editNum, editSwitchFirstName, id],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        res.send(result);
+        response.send(result);
       }
     }
   );
@@ -108,7 +136,7 @@ app.delete('/api/delete/:id', (request, response) => {
     if (err) {
       console.log(err);
     } else {
-      res.send(result);
+      response.send(result);
     }
   })
 });

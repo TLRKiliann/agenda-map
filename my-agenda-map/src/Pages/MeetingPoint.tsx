@@ -88,7 +88,6 @@ export const MeetingPoint:React.FC = () => {
   }
 
   const handleRegister = (event: React.MouseEvent<HTMLButtonElement>) => {
-    //event.preventDefault();
     const newDataObject = {
       id: generateId(),
       firstname: firstname,

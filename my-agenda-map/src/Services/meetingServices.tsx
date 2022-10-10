@@ -5,14 +5,14 @@ type DataTypeProps = {
   datatype: DataType[]
 }
 
-//const getUrl = 'http://localhost:4002/api/getAllMembers';
-const getUrl = 'http://localhost:3001/getAllMembers';
-//const postUrl = 'http://localhost:4002/api/create';
-const postUrl = 'http://localhost:3001/getAllMembers';
-//const putUrl = 'http://localhost:4002/api/update';
-const putUrl = 'http://localhost:3001/getAllMembers';
-//const deleteUrl = 'http://localhost:4002/api/delete';
-const deleteUrl = 'http://localhost:3001/getAllMembers';
+const getUrl = 'http://localhost:4002/api/getAllMembers';
+//const getUrl = 'http://localhost:3001/getAllMembers';
+const postUrl = 'http://localhost:4002/api/create';
+//const postUrl = 'http://localhost:3001/getAllMembers';
+const putUrl = 'http://localhost:4002/api/update';
+//const putUrl = 'http://localhost:3001/getAllMembers';
+const deleteUrl = 'http://localhost:4002/api/delete';
+//const deleteUrl = 'http://localhost:3001/getAllMembers';
 
 const getAll = () => {
   const request = axios.get<DataTypeProps>(getUrl)
@@ -20,12 +20,12 @@ const getAll = () => {
 };
 
 const create = (newObject: any) => {
-  const request = axios.post<DataTypeProps>(postUrl, newObject)
+  const request = axios.post(postUrl, newObject)
   return request.then((response: any) => response.data)
 };
 
 const update = (id: number, newObject: any) => {
-  const request = axios.put<DataTypeProps>(`${putUrl}/${id}`, newObject)
+  const request = axios.put(`${putUrl}/${id}`, newObject)
   return request.then((response: any) => response.data)
 };
 

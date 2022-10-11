@@ -1,11 +1,12 @@
 type ButtonMeetingProps = {
+  key: number;
   handleDelete: () => void;
   handleRegister: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const ButtonMeeting = (props: ButtonMeetingProps) => {
   return (
-    <div className="btn--meetingdelete">
+    <div key={props.key} className="btn--meetingdelete">
       <button
         className="delete--btn"
         onClick={props.handleDelete}

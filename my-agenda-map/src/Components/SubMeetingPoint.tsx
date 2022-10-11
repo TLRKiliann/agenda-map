@@ -11,9 +11,10 @@ type SubMeetingPointProps = {
   key: number;
   editNum: boolean;
   editSwitchFirstName: boolean;
+  
 
-  date: string;
-  setDate: React.Dispatch<React.SetStateAction<string>>;
+  datee: string;
+  setDatee: React.Dispatch<React.SetStateAction<string>>;
   
   hour: string;
   setHour: React.Dispatch<React.SetStateAction<string>>;
@@ -83,8 +84,8 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
             </div>
             <div className="pinput--date">
               <input
-                value={props.date}
-                onChange={(event) => props.setDate(event.target.value)} />
+                value={props.datee}
+                onChange={(event) => props.setDatee(event.target.value)} />
             </div>
           </div>
           <div className="right--divhour">
@@ -278,6 +279,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
             </div>
 
             <ButtonMeeting
+              key={props.key}
               handleDelete={props.handleDelete}
               handleRegister={props.handleRegister}
             />

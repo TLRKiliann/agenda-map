@@ -42,8 +42,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  border: 2px solid orange;
 }
 
 .left--div {
@@ -78,16 +76,12 @@
   justify-content: right;
   font-family: 'Consolas';
   font-weight: bold;
-
-  border: 1px solid cyan;
 }
 
 .p--left p {
   display: flex;
   align-items: center;
   justify-content: right;
-
-  border: 1px solid cyan;
 }
 
 .pinput--date input {
@@ -141,8 +135,6 @@
 .changephone--div {
   margin: auto;
   display: flex;
-
-  border: 2px solid white;
 }
 
 .changephone--div input {
@@ -166,8 +158,6 @@
   border-radius: 3px;
   box-shadow: 0px 0px 3px white;
   color: white;
-
-  border: 2px solid yellow;
 }
 
 .btn--modify:hover {

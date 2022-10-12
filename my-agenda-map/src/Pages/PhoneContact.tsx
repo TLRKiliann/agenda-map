@@ -111,7 +111,7 @@ export const PhoneContact:React.FC = () => {
             </button>
           </div>
 
-          {filterData.slice(0, 1).map(secData => ( 
+          {filterData.map(secData => ( 
 
             <div key={secData.id} className="sub--searchnext">
               <p>{secData.firstname} :&nbsp;</p> 

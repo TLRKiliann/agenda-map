@@ -10,7 +10,7 @@ export const MeetingPoint:React.FC = () => {
 
   const [datas, setDatas] = useState<Array<DataType | any>>([]);
 
-  const [date, setDate] = useState<string>("");
+  const [datee, setDatee] = useState<string>("");
   const [hour, setHour] = useState<string>("");
   const [location, setLocation] = useState<string>("");
 
@@ -34,8 +34,8 @@ export const MeetingPoint:React.FC = () => {
       })
   }, []);
 
-  const handleRefresh = () => {
-    meetingServices
+  const handleRefresh = async () => {
+    await meetingServices
       .getAll()
       .then(initialNote => {
         setDatas(initialNote);
@@ -62,7 +62,7 @@ export const MeetingPoint:React.FC = () => {
     event.preventDefault();
     const dataObject = {
       id: generateId(),
-      date: date,
+      datee: datee,
       hour: hour,
       location: location,
       firstname: firstname,
@@ -71,7 +71,7 @@ export const MeetingPoint:React.FC = () => {
       email: email,
       notice: notice,
       editNum: false,
-      editSwitchFirstName: false
+      editName: false
     }
 
     meetingServices
@@ -107,6 +107,7 @@ export const MeetingPoint:React.FC = () => {
         setDatas([])
       })
     alert(`Data saved OK !`);
+    event.preventDefault();
   }
 
 
@@ -117,13 +118,16 @@ export const MeetingPoint:React.FC = () => {
 
   //Update (PUT method)
   const handleUpdate = (id: number) => {
-    const data = datas.find(data => data.id === id)
-    const changePhone = {...data, editNum: !data.editNum}
+    const data = datas.find(data => data.id === id);
+    const mydata = {...data, editNum: !data.editNum};
+    const changePhone = mydata;
     setEditPhone(data ? data.phone : null);
 
     meetingServices
-      .update(id, changePhone)
+      .updateNum(id, changePhone)
       .then(returnData => {
+        console.log("### id ###", id)
+        console.log("### returnData ###", returnData)
         setDatas(datas.map(data => data.id !== id ? data : returnData))
       })
       .catch((error) => {
@@ -134,12 +138,12 @@ export const MeetingPoint:React.FC = () => {
 
   const validateNumber = (id: number) => {
     const data = datas.find(data => data.id === id);
-    const newPhone = {...data, phone: editPhone, editNum: !data.editNum}
+    const newPhone = {...data, phone: editPhone, editNum: !data.editNum};
 
     meetingServices
-      .update(id, newPhone)
+      .updatePostNum(id, newPhone)
       .then(returnData => {
-        setDatas(datas.map(data => data.id === id ? returnData : data)
+        setDatas(datas.map(data => data.id !== id ? data : returnData)
       )})
       .catch((error) => {
         alert(`Phone Number: ${data.phone} not found !`)
@@ -156,12 +160,12 @@ export const MeetingPoint:React.FC = () => {
 
   //Update (PUT method)
   const handleFirstNameSwitch = (id: number) => {
-    const data = datas.find(data => data.id === id)
-    const changeFirstName = {...data, editSwitchFirstName: !data.editSwitchFirstName}
+    const data = datas.find(data => data.id === id);
+    const changeFirstName = {...data, editName: !data.editName};
     setEditFirstName(data ? data.firstname : null);
 
     meetingServices
-      .update(id, changeFirstName)
+      .updateName(id, changeFirstName)
       .then(returnFirstNameSwitch => {
         setDatas(datas.map(data => data.id !== id ? data : returnFirstNameSwitch))
       })
@@ -174,10 +178,10 @@ export const MeetingPoint:React.FC = () => {
   const validateFirstName = (id: number) => {
     const data = datas.find(data => data.id === id);
     const newFirstName = {...data, firstname: editFirstName,
-      editSwitchFirstName: !data.editSwitchFirstName}
+      editName: !data.editName};
 
     meetingServices
-      .update(id, newFirstName)
+      .updatePostName(id, newFirstName)
       .then(returnFirstName => {
         setDatas(datas.map(data => data.id === id ? returnFirstName : data)
       )})
@@ -260,7 +264,7 @@ export const MeetingPoint:React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  onChange={(e) => setDate(e.target.value)}
+                  onChange={(e) => setDatee(e.target.value)}
                   autoFocus
                   placeholder="00/00/0000" />
               </div>
@@ -364,30 +368,30 @@ export const MeetingPoint:React.FC = () => {
         {datas.map((data) => (
           <SubMeetingPoint
             key={data?.id}
-            date={data.date}
-            setDate={data.setDate}
+            datee={data.datee}
+            setDatee={setDatee}
             hour={data.hour}
-            setHour={data.setHour}
+            setHour={setHour}
             location={data.location}
-            setLocation={data.setLocation}
+            setLocation={setLocation}
 
             firstname={data.firstname}
-            setFirstname={data.setFirstname}
+            setFirstname={setFirstname}
             editFirstName={editFirstName}
 
             lastname={data.lastname}
-            setLastname={data.Lastname}
-            editSwitchFirstName={data.editSwitchFirstName}
+            setLastname={setLastname}
+            editName={data.editName}
 
             phone={data.phone}
-            setPhone={data.setPhone}
+            setPhone={setPhone}
             editNum={data.editNum}
             editPhone={editPhone}
 
             email={data.email}
-            setEmail={data.setEmail}
+            setEmail={setEmail}
             notice={data.notice}
-            setNotice={data.setNotice}
+            setNotice={setNotice}
 
             handleChangeFirstName={(event) => handleChangeFirstName(event)}
             handleFirstNameSwitch={() => handleFirstNameSwitch(data.id)}

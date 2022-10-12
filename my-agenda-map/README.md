@@ -1,5 +1,7 @@
 # FRONTEND AGENDA MAP
 
+With MySQL database in LAN.
+
 Agenda was made by CRA + TypeScript :
 
 └─ $ ▶ npx create-react-app my-agenda-map --template typescript
@@ -13,6 +15,13 @@ Agenda was made by CRA + TypeScript :
 └─ $ ▶ npm install --save react-router-dom
 
 └─ $ ▶ npm install --save-dev sass
+
+- Then:
+
+└─ $ ▶ npm start
+
+└─ $ ▶ set HTTPS=true&&npm start
+
 
 ---
 
@@ -61,5 +70,7 @@ it('renders correctly', () => {
 ## My favorites
 
 └─ $ ▶ npm run test
+
 └─ $ ▶ npm run test --code--coverage
+
 └─ $ ▶ npm test -- --coverage

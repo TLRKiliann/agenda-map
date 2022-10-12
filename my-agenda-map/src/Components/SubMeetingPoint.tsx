@@ -10,10 +10,11 @@ import '../StylesComponents/SubMeetingPoint.scss';
 type SubMeetingPointProps = {
   key: number;
   editNum: boolean;
-  editSwitchFirstName: boolean;
+  editName: boolean;
+  
 
-  date: string;
-  setDate: React.Dispatch<React.SetStateAction<string>>;
+  datee: string;
+  setDatee: React.Dispatch<React.SetStateAction<string>>;
   
   hour: string;
   setHour: React.Dispatch<React.SetStateAction<string>>;
@@ -83,8 +84,8 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
             </div>
             <div className="pinput--date">
               <input
-                value={props.date}
-                onChange={(event) => props.setDate(event.target.value)} />
+                value={props.datee}
+                onChange={(event) => props.setDatee(event.target.value)} />
             </div>
           </div>
           <div className="right--divhour">
@@ -140,7 +141,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   />
                 </div>
 
-                {props.editSwitchFirstName ? (
+                {props.editName ? (
 
                   <div className="changephone--div">
                     <input
@@ -156,7 +157,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   ) : null
                 }
 
-                {!props.editSwitchFirstName ? (
+                {!props.editName ? (
 
                   <div className="changephone--btndiv">
                     <button
@@ -170,7 +171,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                 }
               </div>
 
-              {!props.editSwitchFirstName ? (
+              {!props.editName ? (
 
               <div className="right--div">
               

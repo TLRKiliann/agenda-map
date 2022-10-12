@@ -10,7 +10,7 @@ import '../StylesComponents/SubMeetingPoint.scss';
 type SubMeetingPointProps = {
   key: number;
   editNum: boolean;
-  editSwitchFirstName: boolean;
+  editName: boolean;
   
 
   datee: string;
@@ -141,7 +141,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   />
                 </div>
 
-                {props.editSwitchFirstName ? (
+                {props.editName ? (
 
                   <div className="changephone--div">
                     <input
@@ -157,7 +157,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                   ) : null
                 }
 
-                {!props.editSwitchFirstName ? (
+                {!props.editName ? (
 
                   <div className="changephone--btndiv">
                     <button
@@ -171,7 +171,7 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
                 }
               </div>
 
-              {!props.editSwitchFirstName ? (
+              {!props.editName ? (
 
               <div className="right--div">
               
@@ -279,7 +279,6 @@ const SubMeetingPoint = (props: SubMeetingPointProps) => {
             </div>
 
             <ButtonMeeting
-              key={props.key}
               handleDelete={props.handleDelete}
               handleRegister={props.handleRegister}
             />

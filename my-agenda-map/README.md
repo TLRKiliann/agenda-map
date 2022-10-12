@@ -16,6 +16,13 @@ Agenda was made by CRA + TypeScript :
 
 └─ $ ▶ npm install --save-dev sass
 
+- Then:
+
+└─ $ ▶ npm start
+
+└─ $ ▶ set HTTPS=true&&npm start
+
+
 ---
 
 ## TESTING

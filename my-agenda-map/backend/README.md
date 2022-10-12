@@ -96,11 +96,48 @@ DB_PWD: "mypasswd"
 DB_DATABASE: "mytable"
 ```
 
+---
+
+# MySQL Tables on Server LAN (raspberry pi 4)
+
+Security: protected by ssh and firewall that only permit my client machine to connect.
+
+```
+MariaDB [mytable]> DESC phonecontact;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| id        | int(11)      | NO   | PRI | NULL    |       |
+| firstname | varchar(255) | YES  |     | NULL    |       |
+| lastname  | varchar(255) | YES  |     | NULL    |       |
+| phone     | varchar(255) | YES  |     | NULL    |       |
+| email     | varchar(255) | YES  |     | NULL    |       |
+| location  | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+6 rows in set (0.004 sec)
+
+```
 
 ---
 
-# MySQL Database => Tables
+```
+MariaDB [mytable]> DESC meetingpoint;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| id        | int(11)      | NO   | PRI | NULL    |       |
+| datee     | varchar(255) | YES  |     | NULL    |       |
+| hour      | varchar(255) | YES  |     | NULL    |       |
+| location  | varchar(255) | YES  |     | NULL    |       |
+| firstname | varchar(255) | YES  |     | NULL    |       |
+| lastname  | varchar(255) | YES  |     | NULL    |       |
+| phone     | varchar(255) | YES  |     | NULL    |       |
+| email     | varchar(255) | YES  |     | NULL    |       |
+| notice    | varchar(255) | YES  |     | NULL    |       |
+| editNum   | tinyint(1)   | YES  |     | NULL    |       |
+| editName  | tinyint(1)   | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+11 rows in set (0.005 sec)
 
 ```
-Tables
-```
+

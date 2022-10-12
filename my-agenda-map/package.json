@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:4002",
+  "my-agenda-map": "http://localhost:5000",
   "name": "my-agenda-map",
   "version": "0.1.0",
   "private": true,

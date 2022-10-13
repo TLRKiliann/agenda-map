@@ -126,7 +126,7 @@ app.put('/api/update/pnum:id', (request, response) => {
 
   db.query("update meetingpoint set datee = ?, hour = ?, location = ?, firstname = ?, lastname = ?,\
     phone = ?, email = ?, notice = ?, editNum = ?, editName = ?, where id = ?",
-  [datee, hour, location, firstname, lastname, phone, email, notice, editNum, editName, id], (err) => {
+    [datee, hour, location, firstname, lastname, phone, email, notice, editNum, editName, id], (err) => {
     if (err) {
       console.log(err)
     }
@@ -148,11 +148,10 @@ app.put('/api/update/name:id', (request, response) => {
   const notice = request.body.notice;
   const editNum = request.body.editNum;
   const editName = request.body.editName;
-  console.log(id, datee, hour, location, firstname, lastname, phone, email, notice, editNum)
 
   db.query("update meetingpoint set datee = ?, hour = ?, location = ?, firstname = ?, lastname = ?,\
     phone = ?, email = ?, notice = ?, editNum = ?, editName = ?, where id = ?",
-  [datee, hour, location, firstname, lastname, phone, email, notice, editNum, editName, id], (err) => {
+    [datee, hour, location, firstname, lastname, phone, email, notice, editNum, editName, id], (err) => {
     if (err) {
       console.log(err)
     }
@@ -174,11 +173,10 @@ app.put('/api/update/pname:id', (request, response) => {
   const notice = request.body.notice;
   const editNum = request.body.editNum;
   const editName = request.body.editName;
-  console.log(id, datee, hour, location, firstname, lastname, phone, email, notice, editNum)
 
   db.query("update meetingpoint set datee = ?, hour = ?, location = ?, firstname = ?, lastname = ?,\
     phone = ?, email = ?, notice = ?, editNum = ?, editName = ?, where id = ?",
-  [datee, hour, location, firstname, lastname, phone, email, notice, editNum, editName, id], (err) => {
+    [datee, hour, location, firstname, lastname, phone, email, notice, editNum, editName, id], (err) => {
     if (err) {
       console.log(err)
     }

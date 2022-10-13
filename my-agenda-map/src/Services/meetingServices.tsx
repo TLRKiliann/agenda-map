@@ -34,26 +34,26 @@ const create = async (formData: any) => {
 
 const updateNum = async (id: number, formData: any) => {
   //console.log("formData: ", formData)
-  const request = app.put<any>(`${putUrl}/${id}`, formData)
+  const request = app.put(`${putUrl}/${id}`, formData)
   //console.log("[+] request", request)
   return request.then<any>((response: any) => response.data)
 };
 
 
 const updatePostNum = async (id: number, formData: any) => {
-  const request = app.put<any>(`${putSaveUrl}/${id}`, formData)
+  const request = app.put(`${putSaveUrl}/${id}`, formData)
   return await request.then((response: any) => response.data)
 };
 
 const updateName = async (id: number, formData: any) => {
   console.log(formData)
-  const request = app.put<any>(`${putNameUrl}/${id}`, formData)
+  const request = app.put(`${putNameUrl}/${id}`, formData)
   console.log(request)
   return await request.then((response: any) => response.data)
 };
 
 const updatePostName = async (id: number, formData: any) => {
-  const request = app.put<any>(`${putSaveNameUrl}/${id}`, formData)
+  const request = app.put(`${putSaveNameUrl}/${id}`, formData)
   return await request.then((response: any) => response.data)
 };
 

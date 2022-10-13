@@ -2,6 +2,8 @@
 
 I use json-server in mode development with axios services (front).
 
+---
+
 ## INSTALL
 
 └─ $ ▶ npm init
@@ -46,6 +48,7 @@ I use json-server in mode development with axios services (front).
 
 (└─ $ ▶ npm install jwt -- after for login !)
 
+---
 
 ## Access-Control-Allow-... for headers
 
@@ -60,6 +63,8 @@ app.use(function(req, res, next) {
   next();
 });
 ```
+
+---
 
 ## Connection sever with dotenv
 

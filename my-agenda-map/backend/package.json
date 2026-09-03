@@ -12,15 +12,15 @@
   "author": "koalatree",
   "license": "ISC",
   "devDependencies": {
-    "json-server": "^0.17.0",
+    "json-server": "^1.0.0-beta.15",
     "nodemon": "^3.1.10"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "body-parser": "^1.20.1",
+    "body-parser": "^2.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "express": "^4.18.1",
+    "express": "^5.2.1",
     "mariadb": "^3.0.1",
     "mysql2": "^3.9.4"
   }
